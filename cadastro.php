@@ -30,51 +30,44 @@ $u = new Usuario;
 
     <body>
         <header>
-            <h1>Adicionar Funcionários</h1>
+            <h1>Logo</h1>
             <div class="headericons">
                 <a href="funcionarios.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
-                <a href="sair.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
             </div>
         </header>
         <!--Form Cadastro-->
         <div class="container">
             <div class="box">
                 <form method="POST" id="form">
-                    <div class="title">
-                        <span>Cadastro</span>
+                    <div class="photo">
+                        
                     </div>
                     <div class="input">
-                        <input type="text" name="nome" placeholder="Nome" id="nome" maxlength="30">
+                        <label>Código Funcionário</label>
+                        <input type="text" name="codigo" id="codigo" maxlength="20">
+                        <small></small>
+                    </div>
+                    <div class="input">
+                        <label>Nome</label>
+                        <input type="text" name="nome" id="nome" maxlength="30">
+                        <small></small>
+                    </div>
+                    <div class="input">
+                        <label>CPF</label>
+                        <input type="text" name="cpf" id="cpf" maxlength="15">
+                        <small></small>
+                    </div>
+                    <div class="input">
+                        <label>Telefone</label>
+                        <input type="number" name="telefone" id="telefone" maxlength="11">
                         <small></small>
                     </div>
                     <div class="select">
                         <select name="cargo" id="cargo">
                             <option value="hide">Cargo</option>
-                            <option value=0>Administrador</option>
-                            <option value=1>Gerente</option>
-                            <option value=2>Funcionario</option>
+                            <option value=0>Funcionario</option>
+                            <option value=1>Administrador</option>
                         </select>
-                        <small></small>
-                    </div>
-                    <div class="input">
-                        <input type="text" name="turno" placeholder="Turno" id="turno" maxlength="20">
-                        <small></small>
-                    </div>
-                    <div class="input">
-                        <input type="number" name="telefone" placeholder="Telefone" id="telefone" maxlength="20">
-                        <small></small>
-                    </div>
-                    <div class="input">
-                        <input type="text" name="user" placeholder="Usuário" id="user" maxlength="30">
-                        <small></small>
-                    </div>
-                    <div class="input">
-                        <input type="password" name="password" placeholder="Senha" id="password" maxlength="15">
-                        <small></small>
-                    </div>
-                    <div class="input">
-                        <input type="password" name="confirmPassword" placeholder="Confirmar senha" 
-                        id="confirmPassword" maxlength="30">
                         <small></small>
                     </div>
                     <button name="salvar" type="submit" onclick="return checkInputs();">Enviar</button>
