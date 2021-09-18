@@ -1,10 +1,11 @@
 <?php
 
 Class Usuario{
-
-    private $pdo;
     
-    public function cadastrar($nome,$codigo,$cargo){
+    private $pdo;
+    public $msgErro = "";
+    
+    public function cadastrar($codigo,$nome,$cpf,$telefone,$cargo){
         global $pdo;
 
         $sql = $pdo->prepare("SELECT id FROM usuarios WHERE nome = :n");
@@ -13,9 +14,11 @@ Class Usuario{
         if($sql->rowCount() > 0){
             return false;
         } else {
-            $sql = $pdo->prepare("INSERT INTO usuarios (nome, codigo, cargo) VALUES (:n, :cd, :c)");
-            $sql->bindValue(":n",$nome);
+            $sql = $pdo->prepare("INSERT INTO usuarios (codigo, nome, cpf, telefone, cargo) VALUES (:cd, :n, :cpf, :t, :c)");
             $sql->bindValue(":cd",$codigo);
+            $sql->bindValue(":n",$nome);
+            $sql->bindValue(":cpf",$cpf);
+            $sql->bindValue(":t",$telefone);
             $sql->bindValue(":c",$cargo);
             $sql->execute();
 
@@ -33,7 +36,7 @@ Class Usuario{
         global $pdo;
         $sql = $pdo->prepare("SELECT * FROM usuarios WHERE nome = :n AND codigo = :cd");
         $sql->bindValue(":n",$nome);
-        $sql->bindValue(":cd",md5($codigo));
+        $sql->bindValue(":cd",$codigo);
         $sql->execute();
 
         if($sql->rowCount() > 0){
@@ -64,3 +67,4 @@ Class Usuario{
         return $array;
 
     }
+}

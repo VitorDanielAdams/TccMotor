@@ -1,7 +1,7 @@
 <?php
 require_once 'CLASSES/usuarios.php';
 $u = new Usuario;
-include 'conecta.php';
+include 'CLASSES/conecta.php';
 ?>
 
 <!DOCTYPE html>
@@ -74,15 +74,15 @@ include 'conecta.php';
 </body>
 <?php
 if(isset($_POST['salvar'])){
-    $codigo = addslashes($_POST['codigo']);
+    $codigo = $_POST['codigo'];
     $nome = addslashes($_POST['nome']);
     $cpf = addslashes($_POST['cpf']);
     $telefone = $_POST['telefone'];
     $cargo = addslashes($_POST['cargo']);
 
-    if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone) && $tipo != 'hide'){
+    if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone) && $cargo != 'hide'){
         if($u->msgErro == ""){
-            if($u->cadastrar($codigo,$nome,$cpf,$telefone,$tipo)){
+            if($u->cadastrar($codigo,$nome,$cpf,$telefone,$cargo)){
                 ?>
         <div class="sucess">
             <small>Cadastrado com sucesso</small>
