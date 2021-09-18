@@ -55,6 +55,7 @@
                     <small></small>
                 </div>
                 <div class="select">
+                    <label>Cargo</label>
                     <select name="cargo" id="cargo">
                         <option value="hide">Cargo</option>
                         <option value=0>Funcionario</option>
