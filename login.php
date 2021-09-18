@@ -24,8 +24,8 @@
         <div class="box">
             <!--Form Login-->
             <form method="POST" id="form">
-                <div class="title">
-                    <span>Login</span>
+                <div class="photo">
+                    <img src="images/logo.jpg">
                 </div>
                 <div class="input">
                     <label>Nome</label>
