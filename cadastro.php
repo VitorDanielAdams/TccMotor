@@ -21,6 +21,7 @@ include 'conecta.php';
     <link rel="icon" href="images/icon.jpg">
 
     <title>Tela de Cadastro</title>
+    <script src="scriptcad.js"></script>
 </head>
 
 <body>
@@ -81,14 +82,14 @@ if(isset($_POST['salvar'])){
 
     if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone) && $tipo != 'hide'){
         if($u->msgErro == ""){
-            if($u->cadastrar($email,$user,$codigo,$nome,$telefone,$cpf,$tipo)){
+            if($u->cadastrar($codigo,$nome,$cpf,$telefone,$tipo)){
                 ?>
         <div class="sucess">
             <small>Cadastrado com sucesso</small>
         </div>
         <?php
             } else {
-                ?>
+            ?>
             <div class="erro">
                 <small>Usuario já cadastrado</small>
             </div>
@@ -96,22 +97,22 @@ if(isset($_POST['salvar'])){
             }
         } else {
             ?>
-                <div class="erro">
-                    <small><?php echo "Erro: ".$u->msgErro; ?></small>
-                </div>
-                <?php
+            <div class="erro">
+                <small><?php echo "Erro: ".$u->msgErro; ?></small>
+            </div>
+            <?php
         }
     } else {
         ?>
-                    <script>
-                        form.addEventListener('submit', (e) => {
-                            checkInputs();
-                            if (!checkInputs()) {
-                                e.preventDefault();
-                            }
-                        });
-                    </script>
-                    <?php
+        <script>
+            form.addEventListener('submit', (e) => {
+                checkInputs();
+                if (!checkInputs()) {
+                    e.preventDefault();
+                }
+            });
+        </script>
+        <?php
     }
 }
 ?>
