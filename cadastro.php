@@ -57,7 +57,7 @@
                 <div class="select">
                     <label>Cargo</label>
                     <select name="cargo" id="cargo">
-                        <option value="hide">Cargo</option>
+                        <option value="hide">Selecione</option>
                         <option value=0>Funcionario</option>
                         <option value=1>Administrador</option>
                     </select>
