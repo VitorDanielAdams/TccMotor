@@ -24,7 +24,7 @@
     <header>
         <h1>Logo</h1>
         <div class="headericons">
-            <a href="funcionarios.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+            <a href="login.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
         </div>
     </header>
     <!--Form Cadastro-->
