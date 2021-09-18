@@ -8,4 +8,4 @@
 
 - ligar Apache e MySQL no XAMPP
 
-- entrar no navegador no link http://localhost/"nome da pasta"
+- entrar no navegador no link http://localhost/nome da pasta
