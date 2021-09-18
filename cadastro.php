@@ -1,4 +1,7 @@
 <?php
+require_once 'CLASSES/usuarios.php';
+$u = new Usuario;
+include 'conecta.php';
 ?>
 
 <!DOCTYPE html>
@@ -69,5 +72,47 @@
     </div>
 </body>
 <?php
+if(isset($_POST['salvar'])){
+    $codigo = addslashes($_POST['codigo']);
+    $nome = addslashes($_POST['nome']);
+    $cpf = addslashes($_POST['cpf']);
+    $telefone = $_POST['telefone'];
+    $cargo = addslashes($_POST['cargo']);
+
+    if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone) && $tipo != 'hide'){
+        if($u->msgErro == ""){
+            if($u->cadastrar($email,$user,$codigo,$nome,$telefone,$cpf,$tipo)){
+                ?>
+        <div class="sucess">
+            <small>Cadastrado com sucesso</small>
+        </div>
+        <?php
+            } else {
+                ?>
+            <div class="erro">
+                <small>Usuario já cadastrado</small>
+            </div>
+            <?php
+            }
+        } else {
+            ?>
+                <div class="erro">
+                    <small><?php echo "Erro: ".$u->msgErro; ?></small>
+                </div>
+                <?php
+        }
+    } else {
+        ?>
+                    <script>
+                        form.addEventListener('submit', (e) => {
+                            checkInputs();
+                            if (!checkInputs()) {
+                                e.preventDefault();
+                            }
+                        });
+                    </script>
+                    <?php
+    }
+}
 ?>
 </html>
