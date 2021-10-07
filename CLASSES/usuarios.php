@@ -14,7 +14,8 @@ Class Usuario{
         if($sql->rowCount() > 0){
             return false;
         } else {
-            $sql = $pdo->prepare("INSERT INTO usuarios (codigo, nome, cpf, telefone, cargo) VALUES (:cd, :n, :cpf, :t, :c)");
+            $sql = $pdo->prepare("INSERT INTO usuarios (codigo, nome, cpf, telefone, cargo) 
+            VALUES (:cd, :n, :cpf, :t, :c)");
             $sql->bindValue(":cd",$codigo);
             $sql->bindValue(":n",$nome);
             $sql->bindValue(":cpf",$cpf);
