@@ -8,31 +8,36 @@
 
 </head>
 <body>
-<div class="escrita">
-	<p>PROGRAMA DE ESQUEMAS DE REBOBINAGEM DE MOTORES ELÉTRICOS</p>	
-</div>
-<div class="logo">
-	<img src="images/logo.png">
-</div>
- <input id="navbar" type='checkbox'>
-    <label for="navbar">
-        <div class='menu'>
-            <span class='hamburger'></span>
-        </div>
-    </label>
-	<nav class="funcao">   
-		<ul class="func">
-			<li><a href="http://localhost/tcc/login.php" class="" target="">Login</a></li>
-			<li><a href="cadastrarMotores.php" class="cadastro">Cadastrar motor</a>
-				<ul class="itensFunc">
-					<li><a href="" class="">Motor com placa</a></li>
-					<li><a href="" class="">Motor sem placa</a></li>
+	<div class="container">
+		<div class="box">
+			<div class="logo">
+				<img src="images/logo.png">
+			</div>
+			<div class="escrita">
+				<p>PROGRAMA DE ESQUEMAS DE REBOBINAGEM DE MOTORES ELÉTRICOS</p>	
+			</div>
+		</div>
+
+		<input id="navbar" type='checkbox'>
+			<label for="navbar">
+				<div class='menu'>
+					<span class='hamburger'></span>
+				</div>
+			</label>
+			<nav class="funcao">   
+				<ul class="func">
+					<li><a href="login.php" class="" target="">Login</a></li>
+					<li><a href="cadastrarMotores.php" class="cadastro">Cadastrar motor</a>
+						<ul class="itensFunc">
+							<li><a href="" class="">Motor com placa</a></li>
+							<li><a href="" class="">Motor sem placa</a></li>
+						</ul>
+					</li>
+					<li><a href="">Pesquisar motor</a></li>
+					<li><a href="">Sair</a></li>
 				</ul>
-			</li>
-			<li><a href="">Pesquisar motor</a></li>
-			<li><a href="">Sair</a></li>
-		</ul>
-	</nav>
+			</nav>
+	</div>
 <script type="text/javascript" src="scriptMenu.js"></script>
 
 </body>

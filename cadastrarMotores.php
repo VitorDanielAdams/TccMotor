@@ -38,7 +38,11 @@
                 </div>
                 <div class="input">
                     <label>Voltagem</label>
-                    <input type="text">
+                    <select name="voltagem">
+                        <option value="110">110</option>
+                        <option value="220">220</option>
+                        <option value="380">380</option>
+                    </select>
                 </div>
                 <div class="input">
                     <label>Amperagem</label>
@@ -59,14 +63,8 @@
             </div>
             <div class="right">
                 <div class="input">
-                    <label></label>
-                    <select name="">
-                        <option value=""></option>
-                    </select>
-                </div>
-                <div class="input">
                     <label>RPM</label>
-                    <input type="text">
+                    <input type="number" maxlength="4">
                 </div>
                 <div class="input">
                     <label>Sentido de Rotação</label>

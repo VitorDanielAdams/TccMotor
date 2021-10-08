@@ -1,6 +1,5 @@
     @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
-
     *,
     *:before,
     *:after {
@@ -8,51 +7,45 @@
         padding: 0;
         box-sizing: border-box;
     }
-
+    
     body {
         background: red;
-
     }
-
-   .escrita {
-   margin: 0;
-   position: absolute;
-   top: 80%;
-   left: 25%;
-   right: 25%;
-   transform: translate(0, -75%);
-   font-size: 45px;
-   font-weight: bolder;
-   font-family: 'Acme', sans-serif }
-
-    .logo {
-    height: 30em;
-    position: relative;
-    margin: 0;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%) }
-
+    
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .escrita {
+        text-align: center;
+        width: 900px;
+        height: 100px;
+        font: bold 45px 'Acme', sans-serif
+    }
+    
+    .logo img {
+        max-width: 500px;
+    }
+    
     .menu {
-        background: #FFF;
-        border-radius: 50%;
-        bottom: 32px;
-        box-shadow: 0 0 0 0 #FFF, 0 0 0 0 #FFF;
-        cursor: pointer;
+        width: 60px;
         height: 60px;
         position: absolute;
-        left: 32px;
-        transition:  box-shadow 1.1s cubic-bezier(.19,1,.22,1);
-        width: 60px;
+        background: #FFF;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 #FFF, 0 0 0 0 #FFF;
+        transition: box-shadow 1.1s cubic-bezier(.19, 1, .22, 1);
+        cursor: pointer;
         z-index: 2;
     }
-
+    
     .menu:hover {
         box-shadow: 0 0 0 8px #FFF, 0 0 0 8px #FFF;
     }
-
+    
     .hamburger {
         position: relative;
         top: 29px;
@@ -64,7 +57,7 @@
         transform-origin: center;
         transition: .5s ease-in-out;
     }
-
+    
     .hamburger:before,
     .hamburger:after {
         background: #000;
@@ -75,47 +68,45 @@
         width: 100%;
         height: 100%;
     }
-
+    
     .hamburger:before {
         top: -10px;
     }
-
+    
     .hamburger:after {
         bottom: -10px;
     }
-
+    
     input {
         display: none;
     }
-
-    input:checked ~ label .menu {
+    
+    input:checked~label .menu {
         box-shadow: 0 0 0 22vw #FFF, 0 0 0 22vh #FFF;
         border-radius: 1px;
     }
-
-    input:checked ~ label .hamburger {
+    
+    input:checked~label .hamburger {
         transform: rotate(45deg);
     }
-
-    input:checked ~ label .hamburger:after {
+    
+    input:checked~label .hamburger:after {
         transform: rotate(90deg);
         bottom: 0;
     }
-
-    input:checked ~ label .hamburger:before {
+    
+    input:checked~label .hamburger:before {
         transform: rotate(90deg);
         top: 0;
     }
-
-    input:checked ~ .funcao ul {
+    
+    input:checked~.funcao ul {
         opacity: 1;
         visibility: visible;
     }
-
+    
     .funcao ul.func {
         position: relative;
-        top: 350px;
-        left: 0%;
         transform: translate(-50%, -50%);
         list-style: none;
         font-size: 20px;
@@ -125,37 +116,33 @@
         transform: translateX(46px);
         display: block;
     }
-
-    .funcao ul.itensFunc{
+    
+    .funcao ul.itensFunc {
         list-style: none;
     }
-
-    .funcao li:hover ul, .menu li.over ul{display:block;}
-
-    .funcao ul:hover {
-        background: #red;
+    
+    .funcao li:hover ul,
+    .menu li.over ul {
+        display: block;
     }
-
+    
     .funcao ul ul li a {
         font-size: 15px;
         margin: 0;
         padding-left: 50;
-
     }
-
+    
     .funcao ul ul {
         display: none;
     }
-
-    .funcao ul .itensFunc.mostra{
+    
+    .funcao ul .itensFunc.mostra {
         display: block;
-
     }
-
+    
     .funcao a {
-        position:relative;
-        top:0;
-        padding:4px;
+        position: relative;
+        padding: 4px;
         transition: all .2s ease-in-out;
         display: block;
         margin-bottom: 0.5px;
@@ -167,9 +154,8 @@
         -webkit-border-radius: 7px;
         width: 150px;
     }
-
+    
     .funcao a:hover {
-    top:-4px;
-    box-shadow:0 4px 3px #000;
-}
-
+        top: -4px;
+        box-shadow: 0 4px 3px #000;
+    }

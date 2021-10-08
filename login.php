@@ -28,27 +28,31 @@ include 'Conecta.php';
             <!--Form Login-->
             <form method="POST" id="form">
                 <div class="photo">
-                    <img src="images/logo.jpg">
+                    <img src="images/logo.png">
                 </div>
-                <div class="input">
-                    <label>Cpf</label>
-                    <input value="<?php if(isset($_COOKIE["cpf"])) { echo $_COOKIE["cpf"]; } ?>" 
-                    type="text" name="cpf" id="cpf">
-                    <small></small>
-                </div>
-				<div class="input">
-					<label>Senha</label>
-                    <input value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" 
-                    type="password" name="password"  id="password">
-                    <small></small>
-                </div>
-                <div class="check">
-                    <input type="checkbox" id="rem" name="remeber">
-                    <label for="rem">Lembrar-me</label>
-                </div>
-                <button type="submit" name="logar">Entrar</button>
-                <div class="cad">
-                    <a id="linkcad" href="cadastro.php">Cadastre-se.</a>
+                <div class="content">
+                    <div class="input">
+                        <label>Cpf</label>
+                        <input value="<?php if(isset($_COOKIE["cpf"])) { echo $_COOKIE["cpf"]; } ?>" 
+                        type="text" name="cpf" id="cpf">
+                        <small></small>
+                    </div>
+                    <div class="input">
+                        <label>Senha</label>
+                        <input value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" 
+                        type="password" name="password"  id="password">
+                        <small></small>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox" id="rem" name="remeber">
+                        <label for="rem">Lembrar-me</label>
+                    </div>
+                    <div class="btn">
+                        <button type="submit" name="logar">Entrar</button>
+                    </div>
+                    <div class="cad">
+                        <a id="linkcad" href="cadastro.php">Cadastre-se.</a>
+                    </div>
                 </div>
             </form>
         </div>
