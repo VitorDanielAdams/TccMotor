@@ -84,12 +84,13 @@ header {
 
 .func li h1 {
     font: 16px Poppins;
-    color: #922222;
+    color: #a82e2e;
 }
 
 .func li a {
     width: 200px;
     padding: 2px 10px;
+    margin-top: 5px;
     font: 16px Poppins;
     text-decoration: none;
     color: #000;
