@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['id_user'])){
+    header("location: index.php");
+    exit;
+} else if ($_SESSION['tipo'] == 1){ 
+
 require_once 'CLASSES/usuarios.php';
 $u = new Usuario;
 include 'Conecta.php';
@@ -21,66 +27,71 @@ include 'Conecta.php';
     <link rel="icon" href="images/icon.jpg">
 
     <title>Tela de Cadastro</title>
-    <script src="scriptcad.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Logo</h1>
+        <img src="images/logo.png">
         <div class="headericons">
-            <a href="login.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+            <a href="menu.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
         </div>
     </header>
     <!--Form Cadastro-->
     <div class="container">
         <div class="box">
             <form method="POST" id="form">
-                <div class="photo">
-                    
+                <div class="title"> 
+                    <h1>Cadastro</h1>
                 </div>
-                <div class="input">
-                    <label>Código Funcionário</label>
-                    <input type="text" name="codigo" id="codigo" maxlength="20">
-                    <small></small>
-                </div>
-                <div class="input">
-                    <label>Nome</label>
-                    <input type="text" name="nome" id="nome" maxlength="30">
-                    <small></small>
-                </div>
-                <div class="input">
-                    <label>CPF</label>
-                    <input type="text" name="cpf" id="cpf" maxlength="15">
-                    <small></small>
-                </div>
-                <div class="input">
-                    <label>Telefone</label>
-                    <input type="number" name="telefone" id="telefone" maxlength="11">
-                    <small></small>
-                </div>
-				<div class="input">
-					<label>Senha</label>
-					<input type="password" name="password" id="password" maxlength="15">
-					<small></small>
-				</div>
-				<div class="input">
-					<label>Confirmar Senha</label>
-					<input type="password" name="confirmPassword" id="confirmPassword" maxlength="15">
-					<small></small>
-				</div>
-                <div class="select">
-                    <label>Cargo</label>
-                    <select name="cargo" id="cargo">
-                        <option value="hide">Selecione</option>
-                        <option value=0>Funcionario</option>
-                        <option value=1>Administrador</option>
-                    </select>
-                    <small></small>
-                </div>
-                <button name="salvar" type="submit">Salvar</button>
+                <div class="content">
+                    <div class="input">
+                        <label>Código Funcionário</label>
+                        <input type="text" name="codigo" id="codigo" maxlength="20">
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="input">
+                        <label>Nome</label>
+                        <input type="text" name="nome" id="nome" maxlength="30">
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="input">
+                        <label>CPF</label>
+                        <input type="text" name="cpf" id="cpf" maxlength="15">
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="input">
+                        <label>Telefone</label>
+                        <input type="number" name="telefone" id="telefone" maxlength="11">
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="input">
+                        <label>Senha</label>
+                        <input type="password" name="password" id="password" maxlength="15">
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="input">
+                        <label>Confirmar Senha</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" maxlength="15">
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="input">
+                        <label>Cargo</label>
+                        <select name="cargo" id="cargo">
+                            <option value="hide">Selecione</option>
+                            <option value=0>Funcionario</option>
+                            <option value=1>Administrador</option>
+                        </select>
+                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
+                    </div>
+                    <small id="text-error"></small>
+                    <div class="btn">
+                        <button name="salvar" type="submit" onclick="return checkInputs();">Salvar</button>
+                    </div>   
+                </div> 
             </form>
         </div>
     </div>
+    <script src="SCRIPT/scriptcad.js"></script>
 </body>
 <?php
 if(isset($_POST['salvar'])){
@@ -97,31 +108,44 @@ if(isset($_POST['salvar'])){
         if($u->msgErro == ""){
             if($u->cadastrar($codigo,$nome,$cpf,$telefone,$password,$cargo)){
                 ?>
-        <div class="sucess">
-            <small>Cadastrado com sucesso</small>
-        </div>
-        <?php
+                    <script>
+                        text.style.color = "green";
+                        text.innerText = "Cadastrado com sucesso";
+                    </script>
+                <?php
             } else {
-            ?>
-            <div class="erro">
-                <small>Usuario já cadastrado</small>
-            </div>
-            <?php
+                ?>
+                    <script>
+                        text.innerText = "Usuario já cadastrado";
+                    </script>
+                <?php
             }
         } else {
             ?>
-            <div class="erro">
-                <small><?php echo "Erro: ".$u->msgErro; ?></small>
-            </div>
+                <script>
+                    text.innerText = <?php echo "Erro: ".$u->msgErro; ?>;
+                </script>
             <?php
         }
     } else {
         ?>
-		<small>Preencha todos os campos</small>
-        <script>
-        </script>
+            <script>
+                form.addEventListener('submit', (e) => {
+                    checkInputs();
+                    if(!checkInputs()){
+                        e.preventDefault();
+                    }
+                });
+            </script>
         <?php
     }
 }
 ?>
 </html>
+
+<?php 
+} else { 
+    header("location: index.php");
+    exit;
+} 
+?>

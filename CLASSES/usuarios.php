@@ -69,4 +69,18 @@ Class Usuario{
         return $array;
 
     }
+
+    public function createuser() {
+            
+        global $pdo;
+
+        $sql = $pdo->prepare("SELECT id FROM usuarios");
+        $sql->execute();
+        if($sql->rowCount() == 0){
+            $sql = $pdo->prepare("INSERT INTO usuarios (id, codigo, nome, cpf, telefone, senha, cargo)  
+            VALUES  ('1','000000', 'Admin', '000.000.000-00', '0000-0000', :s, '1')");
+            $sql->bindValue(":s",md5(12345678));
+            $sql->execute();
+        }
+    }
 }

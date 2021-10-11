@@ -12,10 +12,26 @@
     <link rel="stylesheet" type="text/css" href="CSS/style.css" />
     <link rel="icon" href="images/icon.jpg">
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 	<title>Pagina Inicial</title>
 </head>
 <body>
-	<h1>Programa de cadastro de motores elétricos</h1>
-	<a href="login.php">logar</a>
+    <header>
+        <div class="user-utils">
+            <a href="login.php">Login</a>
+        </div>
+    </header>
+    <div class="container">
+		<div class="box">
+			<div class="logo">
+				<img src="images/logo.png">
+			</div>
+			<div class="escrita">
+				<p>PROGRAMA DE ESQUEMAS DE REBOBINAGEM DE MOTORES ELÉTRICOS</p>	
+			</div>
+		</div>
+    </div>
+<script type="text/javascript" src="SCRIPT/scriptMenu.js"></script>   
 </body>
 </html>
