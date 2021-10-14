@@ -47,7 +47,7 @@ if($u->logged($_SESSION['id_user'])){
                 <li><h1>Bem vindo <?= $user['nome'] ?></h1></li>
                 <li><a href="" class="cadastro">Cadastrar motor</a>
                     <ul class="itensFunc">
-                        <li><a href="" class="">Motor com placa</a></li>
+                        <li><a href="cadastrarMotores.php" class="">Motor com placa</a></li>
                         <li><a href="" class="">Motor sem placa</a></li>
                     </ul>
                 </li>

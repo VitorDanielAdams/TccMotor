@@ -33,7 +33,7 @@ include 'Conecta.php';
     <header>
         <img src="images/logo.png">
         <div class="headericons">
-            <a href="menu.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+            <a href="funcionarios.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
         </div>
     </header>
     <!--Form Cadastro-->

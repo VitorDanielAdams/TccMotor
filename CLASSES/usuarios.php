@@ -83,4 +83,90 @@ Class Usuario{
             $sql->execute();
         }
     }
+
+    public function paginacao($itens_por_pagina){
+
+        global $pdo;
+
+        $sql = "SELECT COUNT(id) FROM usuarios";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+
+        $row = $sql->fetch();
+        $numrecords = $row[0];
+
+        $numlinks = ceil($numrecords/$itens_por_pagina);
+
+        return $numlinks;
+
+    }
+
+    public function paginacaoPesquisa($busca,$pagina,$itens_por_pagina){
+
+        global $pdo;
+
+        $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$busca%' OR codigo = '$busca' LIMIT $pagina,$itens_por_pagina";
+        $run = $pdo->query($sql);
+        $numlinks = $run->rowCount();
+
+        return $numlinks;
+
+    }
+
+    public function mostraFuncionarios($pagina,$itens_por_pagina){
+
+        global $pdo;
+
+        $sql = "SELECT * FROM usuarios LIMIT $pagina,$itens_por_pagina";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+        $funcionarios = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $funcionarios;
+    }
+
+    public function mostraPesquisa($busca,$pagina,$itens_por_pagina){
+
+        global $pdo;
+
+        $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$busca%' OR codigo = '$busca' LIMIT $pagina,$itens_por_pagina";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+            
+        $funcionarios = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $funcionarios;
+    }
+
+    public function deletaFuncionario($id){
+
+        global $pdo;
+
+        $sql = $pdo->prepare("DELETE FROM usuarios WHERE id = $id AND cargo != 1");
+        $sql->execute();
+
+        $organiza = $pdo->prepare("set @autoid :=0; 
+        update usuarios set id = @autoid := (@autoid+1);
+        alter table usuarios Auto_Increment = 1;");
+        $organiza->execute();
+
+    }
+
+    public function alterarSenha($id, $oldPassword,$password){
+
+        global $pdo;
+        
+        $sql = $pdo->prepare("SELECT id FROM login WHERE id = '$id' AND password != :s");
+        $sql->bindValue(":s",md5($oldPassword));
+        $sql->execute();
+        if($sql->rowCount() > 0){
+            return false;
+        } else {
+            $newPassword = md5($password);
+            $sql = $pdo->prepare("UPDATE login SET password = '$newPassword' WHERE id = $id");
+            $sql->execute();
+
+            return true;
+        }
+    }
 }
