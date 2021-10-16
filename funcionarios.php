@@ -32,16 +32,16 @@ include 'Conecta.php';
 <body>
     <header>
         <h1>Funcionarios</h1>
-        <div class="headericons">
-            <a href="admin.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-            <a href="sair.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
-        </div>
         <form method="GET" class="form">
                 <div class="searchbar">
                     <input name="busca" placeholder="Procure pelo Funcionário">
                 </div>
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
+        <div class="headericons">
+            <a href="admin.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <a href="sair.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
+        </div>
     </header>
     <div class="barratarefas">
         <a href="cadastro.php">Adicionar</a>
@@ -56,13 +56,24 @@ include 'Conecta.php';
             if (!$pagina) $pagina = 0;
             $start = $pagina * $itens_por_pagina;
 
-            if (isset($_GET['busca'])) {
+            if (isset($_GET['busca']) && !empty($_GET['busca'])) {
                
                 $busca = addslashes($_GET['busca']);
                
                 $funcionarios = $u->mostraPesquisa($busca,$start,$itens_por_pagina);
-                
-                $numlinks = $u->paginacaoPesquisa($busca,$start,$itens_por_pagina);
+                if($funcionarios == false){
+                    ?>
+                        <div class="nosearch">
+                            <h1>Nenhum resultado encontrado <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
+                            <div class="paginacao">
+                                <?php
+                                    echo "<a href='funcionarios.php' class='pag'>Voltar</a>";
+                                ?>
+                            </div>
+                        </div>
+                    <?php
+                } else {
+                    $numlinks = $u->paginacaoPesquisa($busca,$start,$itens_por_pagina);
                 
             ?>
             <table id="data-table">
@@ -112,7 +123,7 @@ include 'Conecta.php';
                             </a>
                         </td>
                     </tr>
-                    <?php } ?>
+                    <?php } } ?>
                 </tbody> 
             </table>
         <div class="paginacao">
@@ -120,7 +131,7 @@ include 'Conecta.php';
                 if($start > 0){
                     echo "<a href='funcionarios.php?busca=$busca&start=".($pagina-1)."' class='pag'>Anterior</a>";
                 }
-                for($i=0;$i<$numlinks;$i++){
+                for($i=0;$i<$numlinks-1;$i++){
                     $y = $i+1;
                     $class = ' ';
                     if ($pagina == $i){
@@ -128,7 +139,7 @@ include 'Conecta.php';
                     } 
                     echo "<a href='funcionarios.php?busca=$busca&start=".$i."' class='pag ".$class."'>$y</a>";
                 }
-                if(($i+1) > $pagina && $pagina < $numlinks-1){
+                if(($i+1) > $pagina && $pagina < $numlinks-2){
                     echo "<a href='funcionarios.php?busca=$busca&start=".($pagina+1)."' class='pag'>Proxima</a>";
                 } 
             ?>
@@ -137,7 +148,7 @@ include 'Conecta.php';
             } else {
         
                 $funcionarios = $u->mostraFuncionarios($start,$itens_por_pagina);
-        
+                
         ?>
         <table id="data-table">
             <thead>
@@ -192,6 +203,7 @@ include 'Conecta.php';
     </div>
     <div class="paginacao">
         <?php 
+            $busca = null;
             if($start > 0){
                 echo "<a href='funcionarios.php?start=".($pagina-1)."' class='pag'>Anterior</a>";
             }
@@ -214,7 +226,7 @@ include 'Conecta.php';
 <?php 
 }
 } else { 
-    header("location: homePage.php");
+    header("location: menu.php");
     exit;
 } 
 ?>

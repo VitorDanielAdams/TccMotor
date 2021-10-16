@@ -33,8 +33,9 @@
                 <div class="left">
                     <div class="input">
                         <label>Sistema</label>
-                        <select name="">
-                            <option value=""></option>
+                        <select name="sistema">
+                            <option value="monof">Monofásico</option>
+                            <option value="trif">Trifásico</option>
                         </select>
                     </div>
                     <div class="input">
@@ -47,11 +48,7 @@
                     </div>
                     <div class="input">
                         <label>Voltagem</label>
-                        <select name="voltagem">
-                            <option value="110">110</option>
-                            <option value="220">220</option>
-                            <option value="380">380</option>
-                        </select>
+                        <input type="text">
                     </div>
                     <div class="input">
                         <label>Amperagem</label>
@@ -73,21 +70,34 @@
                 <div class="right">
                     <div class="input">
                         <label>RPM</label>
-                        <input type="number" maxlength="4">
+                        <input type="text">
                     </div>
                     <div class="input">
                         <label>Sentido de Rotação</label>
-                        <select name="">
-                            <option value=""></option>
+                        <select name="rotacao">
+                            <option value="horario">Horário</option>
+                            <option value="anti">Anti-horário</option>
                         </select>
                     </div>
+                    <div class="input">
+                        <label>Esquema de ligação</label>
+                        <select name="ligação">
+                            <option value="serie">Série</option>
+                            <option value="paralelo">Paralelo</option>
+                        </select>
+                    <div class="input">
+                        <label>Camada</label>
+                        <select name="camada">
+                            <option value="horario">Única</option>
+                            <option value="anti">Dupla</option>
+                        </select>
                     <div class="input">
                         <label>Informações opcionais</label>
                         <input type="text">
                     </div>
                     <div class="input">
                         <label>Imagem</label>
-                        <input type="text">
+                        <input type="file">
                     </div>
                 </div>
             </div>

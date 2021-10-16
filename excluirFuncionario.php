@@ -16,8 +16,8 @@
 
     include 'Conecta.php';
 
-    $u->deletaFuncionario($id);
-
+    $u->deleta($id);
+    $u->createuser();
     header("location: funcionarios.php");
 
     } else { 

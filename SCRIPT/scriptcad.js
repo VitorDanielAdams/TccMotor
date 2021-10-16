@@ -11,7 +11,7 @@ const text = document.getElementById("text-error");
 
 function checkInputs() {
 
-    text.innerText = " "
+    text.innerText = " ";
 
     const codigoValue = codigo.value.trim();
     const nomeValue = nome.value.trim();

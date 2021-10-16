@@ -5,9 +5,19 @@ if(!isset($_SESSION['id_user'])){
     exit;
 } else if ($_SESSION['tipo'] == 1){ 
 
-require_once 'CLASSES/usuarios.php';
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+}	else {
+    echo 'Código não informado!';
+    exit;
+}
+
+require_once 'CLASSES/Usuarios.php';
 $u = new Usuario;
 include 'Conecta.php';
+
+$funcionarios = $u->seleciona($id); 
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +36,7 @@ include 'Conecta.php';
     <link rel="stylesheet" type="text/css" href="CSS/styleCadastro.css" />
     <link rel="icon" href="images/icon.jpg">
 
-    <title>Tela de Cadastro</title>
+    <title>Editar Cadastro</title>
 </head>
 
 <body>
@@ -41,43 +51,37 @@ include 'Conecta.php';
         <div class="box">
             <form method="POST" id="form">
                 <div class="title"> 
-                    <h1>Cadastro</h1>
+                    <h1>Editar</h1>
                 </div>
                 <div class="content">
                     <div class="input">
                         <label>Código Funcionário</label>
-                        <input type="text" name="codigo" id="codigo" maxlength="20">
+                        <input type="text" value="<?= $funcionarios['codigo'] ?>" 
+                        name="codigo" id="codigo" maxlength="20">
                         <span><i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
                     <div class="input">
                         <label>Nome</label>
-                        <input type="text" name="nome" id="nome" maxlength="30">
+                        <input type="text" value="<?= $funcionarios['nome'] ?>" 
+                        name="nome" id="nome" maxlength="30">
                         <span><i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
                     <div class="input">
                         <label>CPF</label>
-                        <input type="text" name="cpf" id="cpf" maxlength="15">
+                        <input type="text" value="<?= $funcionarios['cpf'] ?>" 
+                        name="cpf" id="cpf" maxlength="15">
                         <span><i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
                     <div class="input">
                         <label>Telefone</label>
-                        <input type="number" name="telefone" id="telefone" maxlength="11">
-                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
-                    </div>
-                    <div class="input">
-                        <label>Senha</label>
-                        <input type="password" name="password" id="password" maxlength="15">
-                        <span><i class="fa fa-times" aria-hidden="true"></i></span>
-                    </div>
-                    <div class="input">
-                        <label>Confirmar Senha</label>
-                        <input type="password" name="confirmPassword" id="confirmPassword" maxlength="15">
+                        <input type="number" value="<?= $funcionarios['telefone'] ?>" 
+                        name="telefone" id="telefone" maxlength="11">
                         <span><i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
                     <div class="input">
                         <label>Cargo</label>
                         <select name="cargo" id="cargo">
-                            <option value="hide">Selecione</option>
+                            <option value="<?= $funcionarios['cargo'] ?>">Selecione</option>
                             <option value=0>Funcionario</option>
                             <option value=1>Administrador</option>
                         </select>
@@ -99,20 +103,12 @@ if(isset($_POST['salvar'])){
     $nome = addslashes($_POST['nome']);
     $cpf = addslashes($_POST['cpf']);
     $telefone = $_POST['telefone'];
-	$password = addslashes($_POST['password']);
-	$confirmPassword = addslashes($_POST['confirmPassword']);
     $cargo = addslashes($_POST['cargo']);
 
-    if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone) && $cargo != 'hide' 
-	&& !empty($password) && !empty($confirmPassword)){
+    if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone)){
         if($u->msgErro == ""){
-            if($u->cadastrar($codigo,$nome,$cpf,$telefone,$password,$cargo)){
-                ?>
-                    <script>
-                        text.style.color = "green";
-                        text.innerText = "Cadastrado com sucesso";
-                    </script>
-                <?php
+            if($u->editar($codigo,$nome,$cpf,$telefone,$cargo,$id)){
+                header("location: funcionarios.php");
             } else {
                 ?>
                     <script>

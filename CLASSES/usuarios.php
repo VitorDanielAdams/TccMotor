@@ -120,9 +120,13 @@ Class Usuario{
         $sql = "SELECT * FROM usuarios LIMIT $pagina,$itens_por_pagina";
         $sql = $pdo->prepare($sql);
         $sql->execute();
-        $funcionarios = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-        return $funcionarios;
+        if($sql->rowCount() > 0){
+            $funcionarios = $sql->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $funcionarios;
+        } else {
+            return false;
+        }
     }
 
     public function mostraPesquisa($busca,$pagina,$itens_por_pagina){
@@ -138,11 +142,48 @@ Class Usuario{
         return $funcionarios;
     }
 
-    public function deletaFuncionario($id){
+    public function alterarSenha($id, $oldPassword,$password){
+
+        global $pdo;
+        
+        $sql = $pdo->prepare("SELECT id FROM usuarios WHERE id = '$id' AND senha != :s");
+        $sql->bindValue(":s",md5($oldPassword));
+        $sql->execute();
+        if($sql->rowCount() > 0){
+            return false;
+        } else {
+            $newPassword = md5($password);
+            $sql = $pdo->prepare("UPDATE usuarios SET senha = '$newPassword' WHERE id = $id");
+            $sql->execute();
+
+            return true;
+        }
+    }
+
+    public function editar($codigo,$nome,$cpf,$telefone,$cargo,$id){
+
+        global $pdo;
+        
+        $sql = $pdo->prepare("SELECT id FROM usuarios WHERE cpf = :cpf AND id != :i");
+        $sql->bindValue(":cpf",$cpf);
+        $sql->bindValue(":i",$id);
+        $sql->execute();
+        if($sql->rowCount() > 0){
+            return false;
+        } else {
+            $sql = $pdo->prepare("UPDATE usuarios SET codigo = '$codigo', nome = '$nome', cpf = '$cpf', 
+            cargo = '$cargo', telefone = '$telefone' WHERE id = $id");
+            $sql->execute();
+
+            return true;
+        }
+    }
+
+    public function deleta($id){
 
         global $pdo;
 
-        $sql = $pdo->prepare("DELETE FROM usuarios WHERE id = $id AND cargo != 1");
+        $sql = $pdo->prepare("DELETE FROM usuarios WHERE id = $id AND cargo != 1 OR cpf = '000.000.000-00'");
         $sql->execute();
 
         $organiza = $pdo->prepare("set @autoid :=0; 
@@ -152,21 +193,30 @@ Class Usuario{
 
     }
 
-    public function alterarSenha($id, $oldPassword,$password){
+    public function seleciona($id){
 
         global $pdo;
-        
-        $sql = $pdo->prepare("SELECT id FROM login WHERE id = '$id' AND password != :s");
-        $sql->bindValue(":s",md5($oldPassword));
-        $sql->execute();
-        if($sql->rowCount() > 0){
-            return false;
-        } else {
-            $newPassword = md5($password);
-            $sql = $pdo->prepare("UPDATE login SET password = '$newPassword' WHERE id = $id");
-            $sql->execute();
 
-            return true;
-        }
+        $sql = "SELECT * FROM usuarios WHERE id = $id";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+
+        $funcionarios = $sql->fetch();
+
+        return $funcionarios;
+    }
+
+    public function senha($id){
+
+        global $pdo;
+
+        $sql = "SELECT senha FROM usuarios WHERE id = $id";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+
+        $senha = $sql->fetch();
+
+        return $senha;
+
     }
 }
