@@ -17,7 +17,6 @@ $u = new Usuario;
 include 'Conecta.php';
 
 $funcionarios = $u->seleciona($id); 
-
 ?>
 
 <!DOCTYPE html>

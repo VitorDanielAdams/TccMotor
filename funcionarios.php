@@ -39,15 +39,15 @@ include 'Conecta.php';
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
         <div class="headericons">
-            <a href="admin.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+            <a href="admin.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
             <a href="sair.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
         </div>
     </header>
-    <div class="barratarefas">
-        <a href="cadastro.php">Adicionar</a>
-    </div>
     
     <div class="container">
+        <div class="barratarefas">
+            <a href="cadastro.php">Adicionar</a>
+        </div>
         <?php 
 
             $itens_por_pagina = 6;
@@ -148,7 +148,7 @@ include 'Conecta.php';
             } else {
         
                 $funcionarios = $u->mostraFuncionarios($start,$itens_por_pagina);
-                
+        
         ?>
         <table id="data-table">
             <thead>

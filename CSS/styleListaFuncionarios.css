@@ -50,17 +50,90 @@ header a:hover {
     opacity: .7;
 }
 
+.form {
+    width: 230px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form input {
+    width: 240px;
+    height: 25px;
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid #585858;
+    padding: 2px 5px;
+    text-align: center;
+    color: #838383;
+    transition: 0.3s;
+}
+
+.form input:focus {
+    width: 245px;
+    padding: 10px 10px;
+    border-bottom: 1.5px solid #1E90FF;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #dddddd inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #727272 !important;
+}
+
+.form button {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.form button:hover {
+    color: #1E90FF;
+    opacity: 0.7;
+}
+
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.barratarefas {
+    padding: 0 50px;
+    margin-top: 3rem;
+    margin-right: auto;
+}
+
+.barratarefas a {
+    padding: 8px 35px;
+    background-color: #252525;
+    color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #585858;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.barratarefas a:hover {
+    font: 17px Poppins;
+    background-color: #eb1616;
+    box-shadow: 2px 3px 5px #1f0d0d;
+    opacity: 0.8;
 }
 
 #data-table {
     width: 1300px;
     border-spacing: 0 0;
     border: 1px solid #585858;
-    margin-top: 2rem;
     color: #fff;
+    margin-top: 2rem;
     box-shadow: 0 0 10px rgb(153, 153, 153);
 }
 
