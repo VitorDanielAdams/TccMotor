@@ -10,6 +10,8 @@ require_once 'CLASSES/Usuarios.php';
 $u = new Usuario;  
 
 include 'Conecta.php';
+
+$u->createuser();
 ?>
 
 <!DOCTYPE html>
@@ -146,9 +148,7 @@ include 'Conecta.php';
         </div>
         <?php        
             } else {
-        
-                $funcionarios = $u->mostraFuncionarios($start,$itens_por_pagina);
-        
+                $funcionarios = $u->mostraFuncionarios($start,$itens_por_pagina);        
         ?>
         <table id="data-table">
             <thead>

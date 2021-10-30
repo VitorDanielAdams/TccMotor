@@ -44,7 +44,7 @@ if(!isset($_SESSION['id_user'])){
                         <i class="fa fa-user-circle" aria-hidden="true"></i> Funcionarios</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-cog" aria-hidden="true"></i> Motores</a>
+                        <a href="pesquisa.php"><i class="fa fa-cog" aria-hidden="true"></i> Motores</a>
                     </li>
                     <li><a href="sair.php">
                         <i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>

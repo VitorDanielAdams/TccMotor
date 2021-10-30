@@ -54,7 +54,7 @@ if($u->logged($_SESSION['id_user'])){
                             <li><a href="" class="">Motor sem placa</a></li>
                         </ul>
                     </li>
-                    <li><a href="">Pesquisar motor</a></li>
+                    <li><a href="pesquisa.php">Pesquisar motor</a></li>
                     <li><a href="sair.php">Sair</a></li>
                 </ul>
             </div>

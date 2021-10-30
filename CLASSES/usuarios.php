@@ -133,7 +133,7 @@ Class Usuario{
 
         global $pdo;
 
-        $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$busca%' OR codigo = '$busca' LIMIT $pagina,$itens_por_pagina";
+        $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$busca%' OR codigo = '$busca' AND id != 0 LIMIT $pagina,$itens_por_pagina";
         $sql = $pdo->prepare($sql);
         $sql->execute();
             
