@@ -37,7 +37,7 @@ if(!isset($_SESSION['id_user'])){
     <div class="container">
         <form method="POST" id="form" enctype="multipart/form-data">
             <div class="box" id="box">
-                <div class="content">
+                <div class="content" id="content">
                     <div class="left">
                         <div class="input">
                             <label>Sistema</label>
@@ -46,6 +46,10 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="Monofásico">Monofásico</option>
                                 <option value="Trifásico">Trifásico</option>
                             </select>
+                        </div>
+                        <div class="input">
+                            <label>Observação</label>
+                            <input type="text" name="obs" id="obs">
                         </div>
                         <div class="input">
                             <label>Potência</label>
@@ -79,7 +83,6 @@ if(!isset($_SESSION['id_user'])){
                             </div>	
                             <input type="hidden" id="box_count" value="1">
                         </div>
-                        
                     </div>
                     <div class="right">
                         <div class="input">
@@ -150,22 +153,23 @@ if(!isset($_SESSION['id_user'])){
             var box_count=jQuery("#box_count").val();
             if(box_count < 6){
                 box_count++;
-                tamanho+=5;
+                tamanho+=10;
                 jQuery("#box_count").val(box_count);
                 jQuery("#inputespiras").append('<div class="box-add" id="box_loop_'+box_count+'"><div class="field"><input type="text" name="espiras[]" id="espiras"></div><div class="button-box-r"><input type="button" name="submit" id="submit" value="X" onclick=remove_more("'+box_count+'")></div></div>');   
                 document.getElementById("box").style.height=tamanho+"px";
+                document.getElementById("content").style.height="600px";
             }
         }
         function remove_more(box_count){
             jQuery("#box_loop_"+box_count).remove();
             var box_count=jQuery("#box_count").val();
             box_count--;
-            tamanho-=5;
+            tamanho-=10;
             jQuery("#box_count").val(box_count);
             document.getElementById("box").style.height=tamanho+"px";
         }
     </script>
-    <script src="SCRIPT/scriptcadmotor.js"></script>
+    <script src="SCRIPT/scriptcadmotorSP.js"></script>
 </body>
 <?php
 if(isset($_POST['salvar'])){
@@ -183,6 +187,7 @@ if(isset($_POST['salvar'])){
     $camada = addslashes($_POST['camada']);
     $informacoes = addslashes($_POST['informacoes']);
     $cliente = addslashes($_POST['cliente']);
+    $obs = addslashes($_POST['obs']);
     
     $images=$_FILES['imagem']['name'];
     $tmp_dir=$_FILES['imagem']['tmp_name'];
@@ -199,8 +204,8 @@ if(isset($_POST['salvar'])){
     && !empty($espiras) && !empty($rpm) && $rotacao != 'hide'
     && $ligacao != 'hide' && $camada != 'hide' && !empty($pic)){
         if($m->msgErro == ""){
-            $m->cadastrar($sistema,$marca,$potencia,$voltagem,$amperagem,$bitola,
-            $fios,$espiras,$rpm,$rotacao, $ligacao, $camada, $informacoes, $pic,$cliente)
+            $m->cadastrarMSP($sistema,$marca,$potencia,$voltagem,$amperagem,$bitola,
+            $fios,$espiras,$rpm,$rotacao, $ligacao, $camada, $informacoes, $pic,$cliente,$obs)
             ?>
                 <script>
                     text.style.color = "green";

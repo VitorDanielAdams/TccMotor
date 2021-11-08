@@ -83,6 +83,10 @@ header a:hover {
     width: 310px;
 }
 
+.left {
+    margin-bottom: auto;
+}
+
 .input {
     height: 100%;
     display: flex;

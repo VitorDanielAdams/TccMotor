@@ -11,7 +11,6 @@ const rpm = document.getElementById('rpm');
 const rotacao = document.getElementById('rotacao');
 const ligacao = document.getElementById('ligacao');
 const camada = document.getElementById('camada');
-const img = document.getElementById('imagem');
 const cliente = document.getElementById('cliente');
 
 const text = document.getElementById("text-error");
@@ -32,7 +31,6 @@ function checkInputs() {
     const rotacaoValue = rotacao.value.trim();
     const ligacaoValue = ligacao.value.trim();
     const camadaValue = camada.value.trim();
-    const imgValue = img.value.trim();
     const clienteValue = cliente.value.trim();
 
     if (sistemaValue === 'hide') {
@@ -107,12 +105,6 @@ function checkInputs() {
         setSuccessFor(camada);
     }
 
-    if (imgValue === '') {
-        setErrorFor(img);
-    } else {
-        setSuccessFor(img);
-    }
-
     if (clienteValue === '') {
         setErrorFor(cliente);
     } else {
@@ -123,7 +115,7 @@ function checkInputs() {
         amperagemValue !== '' && bitolaValue !== '' && fiosValue !== '' &&
         espirasValue !== '' && marcaValue !== '' && rpmValue !== '' &&
         rotacaoValue !== 'hide' && ligacaoValue !== 'hide' && camadaValue !== 'hide' &&
-        imgValue !== '' && clienteValue !== '') {
+        clienteValue !== '') {
         return true;
     } else {
         return false;
@@ -134,23 +126,13 @@ function checkInputs() {
 function setErrorFor(input) {
     const inputControl = input.parentElement;
 
-    if (input === img) {
-        inputControl.className = 'inputfile error';
-    } else {
-        inputControl.className = 'input error';
-    }
-
+    inputControl.className = 'input error';
 
 }
 
 function setSuccessFor(input) {
     const inputControl = input.parentElement;
 
-    text.innerText = " ";
-    if (input === img) {
-        inputControl.className = 'inputfile';
-    } else {
-        inputControl.className = 'input';
-    }
+    inputControl.className = 'input';
 
 }

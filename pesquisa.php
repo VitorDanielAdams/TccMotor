@@ -30,16 +30,143 @@ if(!isset($_SESSION['id_user'])){
 <body>
     <header>
         <img src="images/logo.png">
-        <form method="GET" class="form">
+        <a href="menu.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+    </header>
+    <div class="container">
+        <div class="pesquisa">
+            <form method="GET" class="form">
                 <div class="searchbar">
                     <input name="busca" placeholder="Procurar Motor">
                 </div>
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-        </form>
-        <a href="menu.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
-    </header>
+            </form>
+        </div>
+        <?php
+           
+            $motor = $m->mostrarMotorCP();
 
+            foreach ($motor as $mcp){
+        ?>
+        <div class="item">
+            <a href='mostrarMotor.php?id=<?= $mcp['id'] ?>'>
+                <div class="imagem">
+                    <img src="upload/<?= $mcp['imagem']?>" >
+                </div>
+            </a>
+            <div class="content">   
+                <div class="row">
+                    <div class="text">
+                        <div class="title"><h2>Sistema</h2></div>
+                        <h4><?= $mcp['sistema'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Marca</h2></div>
+                        <h4><?= $mcp['marca'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Ligação</h2></div>
+                        <h4><?= $mcp['ligacao'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Rotação</h2></div>
+                        <h4><?= $mcp['rotacao'] ?></h4>
+                    </div>
+                    <div class="action">
+                        <a href='editarMotor.php?id=<?= $mcp['id'] ?>'>
+                            <img src="./images/edit.svg" alt="editar">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <div class="title"><h2>Cliente</h2></div>
+                        <h4><?= $mcp['cliente'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Voltagem</h2></div>
+                        <h4><?= $mcp['voltagem'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Potência</h2></div>
+                        <h4><?= $mcp['potencia'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Camada</h2></div>
+                        <h4><?= $mcp['camada'] ?></h4>
+                    </div>
+                    <div class="action">
+                        <a href='excluirMotor.php?id=<?= $mcp['id'] ?>'>
+                            <img src="./images/remove.svg" alt="remover">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <?php } ?>
+        <?php
+            $motor = $m->mostrarMotorSP();
 
+            foreach ($motor as $msp){
+        ?>
+        <div class="item">
+            <a href='mostrarMotor.php?id=<?= $msp['id'] ?>'>
+                <div class="imagem">
+                    <img src="upload/<?= $msp['imagem']?>" >
+                </div>
+            </a>
+            <div class="content">   
+                <div class="row">
+                    <div class="text">
+                        <div class="title"><h2>Sistema</h2></div>
+                        <h4><?= $msp['sistema'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Marca</h2></div>
+                        <h4><?= $msp['marca'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Ligação</h2></div>
+                        <h4><?= $msp['ligacao'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Rotação</h2></div>
+                        <h4><?= $msp['rotacao'] ?></h4>
+                    </div>
+                    <div class="action">
+                        <a href='editarMotor.php?id=<?= $msp['id'] ?>'>
+                            <img src="./images/edit.svg" alt="editar">
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <div class="title"><h2>Cliente</h2></div>
+                        <h4><?= $msp['cliente'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Voltagem</h2></div>
+                        <h4><?= $msp['voltagem'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Potência</h2></div>
+                        <h4><?= $msp['potencia'] ?></h4>
+                    </div>
+                    <div class="text">
+                        <div class="title"><h2>Observação</h2></div>
+                        <h4><?= $msp['obs'] ?></h4>
+                    </div>
+                    <div class="action">
+                        <a href='excluirMotor.php?id=<?= $msp['id'] ?>'>
+                            <img src="./images/remove.svg" alt="remover">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <?php } ?>
+    </div>
 </body>
 </html>
 

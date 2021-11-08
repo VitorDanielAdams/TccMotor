@@ -13,6 +13,7 @@ const ligacao = document.getElementById('ligacao');
 const camada = document.getElementById('camada');
 const img = document.getElementById('imagem');
 const cliente = document.getElementById('cliente');
+const obs = document.getElementById('obs');
 
 const text = document.getElementById("text-error");
 
@@ -34,6 +35,9 @@ function checkInputs() {
     const camadaValue = camada.value.trim();
     const imgValue = img.value.trim();
     const clienteValue = cliente.value.trim();
+    const obsValue = obs.value.trim();
+
+    console.log(imgValue);
 
     if (sistemaValue === 'hide') {
         setErrorFor(sistema);
@@ -119,11 +123,17 @@ function checkInputs() {
         setSuccessFor(cliente);
     }
 
+    if (obsValue === '') {
+        setErrorFor(obs);
+    } else {
+        setSuccessFor(obs);
+    }
+
     if (sistemaValue !== 'hide' && potenciaValue !== '' && voltagemValue !== '' &&
         amperagemValue !== '' && bitolaValue !== '' && fiosValue !== '' &&
         espirasValue !== '' && marcaValue !== '' && rpmValue !== '' &&
         rotacaoValue !== 'hide' && ligacaoValue !== 'hide' && camadaValue !== 'hide' &&
-        imgValue !== '' && clienteValue !== '') {
+        imgValue !== '' && clienteValue !== '' && obsValue !== '') {
         return true;
     } else {
         return false;
