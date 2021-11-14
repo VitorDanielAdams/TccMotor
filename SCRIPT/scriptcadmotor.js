@@ -3,9 +3,12 @@ const sistema = document.getElementById('sistema');
 const potencia = document.getElementById('potencia');
 const voltagem = document.getElementById('voltagem');
 const amperagem = document.getElementById('amperagem');
-const bitola = document.getElementById('bitola');
-const fios = document.getElementById('fios');
-const espiras = document.getElementById('espiras');
+const bitola = document.getElementById('bitolaP');
+const fios = document.getElementById('fiosP');
+const espiras = document.getElementById('espirasP');
+const bitolaAux = document.getElementById('bitolaAux');
+const fiosA = document.getElementById('fiosA');
+const espirasA = document.getElementById('espirasA');
 const marca = document.getElementById('marca');
 const rpm = document.getElementById('rpm');
 const rotacao = document.getElementById('rotacao');
@@ -27,6 +30,9 @@ function checkInputs() {
     const bitolaValue = bitola.value.trim();
     const fiosValue = fios.value.trim();
     const espirasValue = espiras.value.trim();
+    const bitolaAValue = bitolaAux.value.trim();
+    const fiosAValue = fiosA.value.trim();
+    const espirasAValue = espirasA.value.trim();
     const marcaValue = marca.value.trim();
     const rpmValue = rpm.value.trim();
     const rotacaoValue = rotacao.value.trim();
@@ -77,6 +83,24 @@ function checkInputs() {
         setSuccessFor(espiras);
     }
 
+    if (bitolaAValue === '') {
+        setErrorFor(bitolaAux);
+    } else {
+        setSuccessFor(bitolaAux);
+    }
+
+    if (fiosAValue === '') {
+        setErrorFor(fiosA);
+    } else {
+        setSuccessFor(fiosA);
+    }
+
+    if (espirasAValue === '') {
+        setErrorFor(espirasA);
+    } else {
+        setSuccessFor(espirasA);
+    }
+
     if (marcaValue === '') {
         setErrorFor(marca);
     } else {
@@ -121,7 +145,8 @@ function checkInputs() {
 
     if (sistemaValue !== 'hide' && potenciaValue !== '' && voltagemValue !== '' &&
         amperagemValue !== '' && bitolaValue !== '' && fiosValue !== '' &&
-        espirasValue !== '' && marcaValue !== '' && rpmValue !== '' &&
+        espirasValue !== '' && bitolaAValue !== '' && fiosAValue !== '' &&
+        espirasAValue !== '' && marcaValue !== '' && rpmValue !== '' &&
         rotacaoValue !== 'hide' && ligacaoValue !== 'hide' && camadaValue !== 'hide' &&
         imgValue !== '' && clienteValue !== '') {
         return true;

@@ -35,7 +35,7 @@ if(!isset($_SESSION['id_user'])){
     <link rel="stylesheet" type="text/css" href="CSS/stylecadMotores.css" />
     <link rel="icon" href="images/icon.jpg">
 
-    <title>Pagina de Cadastro</title>
+    <title>Editar Motor Com Placa</title>
 </head>
 <body>
     <header>
@@ -45,9 +45,14 @@ if(!isset($_SESSION['id_user'])){
     </header>
     <div class="container">
         <form method="POST" id="form" enctype="multipart/form-data">
-            <div class="box" id="box">
+        <div class="box" id="box">
                 <div class="content">
-                    <div class="left">
+                    
+                    <div class="row">
+                        <div class="input">
+                            <label>Cliente</label>
+                            <input type="text" name="cliente" id="cliente" value="<?= $motor['cliente']?>">
+                        </div>
                         <div class="input">
                             <label>Sistema</label>
                             <select name="sistema" id="sistema">
@@ -56,6 +61,9 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="Trifásico">Trifásico</option>
                             </select>
                         </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="input">
                             <label>Potência</label>
                             <input type="text" name="potencia" id="potencia" value="<?= $motor['potencia']?>">
@@ -64,44 +72,23 @@ if(!isset($_SESSION['id_user'])){
                             <label>Voltagem</label>
                             <input type="text" name="voltagem" id="voltagem" value="<?= $motor['voltagem']?>">
                         </div>
-                        <div class="input">
-                            <label>Amperagem</label>
-                            <input type="text" name="amperagem" id="amperagem" value="<?= $motor['amperagem']?>">
-                        </div>
-                        <div class="input">
-                            <label>Nº Bitola</label>
-                            <input type="text" name="bitola" id="bitola" value="<?= $motor['bitolas']?>">
-                        </div>
-                        <div class="input">
-                            <label>Nº de Fios</label>
-                            <input type="number" name="fios" id="fios" value="<?= $motor['fios']?>">
-                        </div>
-                        <div class="input" id="inputespiras">
-                            <label>Nº de Espiras</label>
-                            <div class="box-add">
-                                <div class="field">
-                                    <input type="textbox" name="espiras[]" id="espiras" value="<?= $motor['espiras']?>">
-                                </div>
-                                <div class="button-box">
-                                    <input type="button" name="submit" id="submit" value="+" onclick="add_more()">
-                                </div>
-                            </div>	
-                            <input type="hidden" id="box_count" value="1">
-                        </div>
-                        
                     </div>
-                    <div class="right">
-                        <div class="input">
-                            <label>Cliente</label>
-                            <input type="text" name="cliente" id="cliente" value="<?= $motor['cliente']?>">
-                        </div>
+
+                    <div class="row">
                         <div class="input">
                             <label>Marca</label>
                             <input type="text" name="marca" id="marca" value="<?= $motor['marca']?>">
                         </div>
                         <div class="input">
+                            <label>Amperagem</label>
+                            <input type="text" name="amperagem" id="amperagem" value="<?= $motor['amperagem']?>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input">
                             <label>RPM</label>
-                            <input type="text" name="rpm" id="rpm" value="<?= $motor['rpm']?>">
+                            <input type="number" name="rpm" id="rpm" value="<?= $motor['rpm']?>">
                         </div>
                         <div class="input">
                             <label>Sentido de Rotação</label>
@@ -111,23 +98,28 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="Anti-Horário">Anti-horário</option>
                             </select>
                         </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="input">
                             <label>Esquema de ligação</label>
                             <select name="ligacao" id="ligacao">
-                                <option value="<?= $motor['rotacao']?>"><?= $motor['rotacao']?></option>
+                                <option value="<?= $motor['ligacao']?>"><?= $motor['ligacao']?></option>
                                 <option value="Série">Série</option>
                                 <option value="Paralelo">Paralelo</option>
                             </select>
                         </div>
                         <div class="input">
                             <label>Camada</label>
-                            <select name="camada" id="camada" >
+                            <select name="camada" id="camada">
                                 <option value="<?= $motor['camada']?>"><?= $motor['camada']?></option>
                                 <option value="Única">Única</option>
                                 <option value="Dupla">Dupla</option>
                             </select>
-
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="input">
                             <label>Informações opcionais</label>
                             <input type="text" name="informacoes" id="informacoes" value="<?= $motor['informacoes']?>">
@@ -139,29 +131,74 @@ if(!isset($_SESSION['id_user'])){
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="input">
+                            <label>Nº Bitola Principal</label>
+                            <input type="text" name="bitolaP" id="bitolaP" value="<?= $motor['bitolasP']?>">
+                        </div>
+                        <div class="input" id="bitolaA">
+                            <label>Nº Bitola Auxiliar</label>
+                            <input type="text" name="bitolaA" id="bitolaAux" value="<?= $motor['bitolaAux']?>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input">
+                            <label>Nº de Fios Principal</label>
+                            <input type="number" name="fiosP" id="fiosP" value="<?= $motor['fiosP']?>">
+                        </div>
+                        <div class="input" id="inputfiosA">
+                            <label>Nº de Fios Auxiliar</label>
+                            <input type="number" name="fiosA" id="fiosA" value="<?= $motor['fiosAux']?>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input" id="inputespiras">
+                            <label>Nº de Espiras Principal</label>
+                            <div class="box-add">
+                                <div class="field">
+                                    <input type="text" name="espirasP[]" id="espirasP" value="<?= $motor['espirasP']?>">
+                                </div>
+                                <div class="button-box">
+                                    <input type="button" name="submit" id="submit" value="+" onclick="add_more()">
+                                </div>
+                            </div>	
+                            <input type="hidden" id="box_count" value="1">
+                        </div>
+                        <div class="input" id="inputespirasA">
+                            <label>Nº de Espiras Auxiliar</label>
+                            <div class="box-add">
+                                <div class="field">
+                                    <input type="text" name="espirasA[]" id="espirasA" value="<?= $motor['espirasAux']?>">
+                                </div>
+                                <div class="button-box">
+                                    <input type="button" name="submitA" id="submit2A" value="+" onclick="add_more2()">
+                                </div>
+                            </div>	
+                            <input type="hidden" id="box_countA" value="1">
+                        </div>
+                    </div>    
                 </div>
                 <small id="text-error"></small>
                 <div class="btn">
-                    <button name="salvar" type="submit">Salvar</button>
+                    <button name="salvar" type="submit" onclick="return checkInputs();">Salvar</button>
                 </div>
             </div>
         </form>
     </div>
     <script src="SCRIPT/jquery-1.4.1.min.js"></script>
     <script>
-        var tamanho = 630;
-        $('#imagem').change(function() {
-            var i = $(this).prev('label').clone();
-            var file = $('#imagem')[0].files[0].name;
-            $(this).prev('label').text(file);
-        });
+         var tamanho = 700;
+
         function add_more(){
             var box_count=jQuery("#box_count").val();
             if(box_count < 6){
                 box_count++;
                 tamanho+=5;
                 jQuery("#box_count").val(box_count);
-                jQuery("#inputespiras").append('<div class="box-add" id="box_loop_'+box_count+'"><div class="field"><input type="text" name="espiras[]" id="espiras"></div><div class="button-box-r"><input type="button" name="submit" id="submit" value="X" onclick=remove_more("'+box_count+'")></div></div>');   
+                jQuery("#inputespiras").append('<div class="box-add" id="box_loop_'+box_count+'"><div class="field"><input type="number" name="espirasP[]" id="espiras"></div><div class="button-box-r"><input type="button" name="submit" id="submit" value="X" onclick=remove_more("'+box_count+'")></div></div>');   
                 document.getElementById("box").style.height=tamanho+"px";
             }
         }
@@ -173,6 +210,25 @@ if(!isset($_SESSION['id_user'])){
             jQuery("#box_count").val(box_count);
             document.getElementById("box").style.height=tamanho+"px";
         }
+
+        function add_more2(){
+            var box_count2=jQuery("#box_countA").val();
+            if(box_count2 < 6){
+                box_count2++;
+                tamanho+=5;
+                jQuery("#box_countA").val(box_count2);
+                jQuery("#inputespirasA").append('<div class="box-add" id="box_loop2_'+box_count2+'"><div class="field"><input type="number" name="espirasA[]" id="espirasA"></div><div class="button-box-r"><input type="button" name="submitA" id="submitA" value="X" onclick=remove_more2("'+box_count2+'")></div></div>');   
+                document.getElementById("box").style.height=tamanho+"px";
+            }
+        }
+        function remove_more2(box_count2){
+            jQuery("#box_loop2_"+box_count2).remove();
+            var box_count2=jQuery("#box_countA").val();
+            box_count2--;
+            tamanho-=5;
+            jQuery("#box_countA").val(box_count2);
+            document.getElementById("box").style.height=tamanho+"px";
+        }
     </script>
     <script src="SCRIPT/scriptcadmotoredit.js"></script>
 </body>
@@ -182,9 +238,12 @@ if(isset($_POST['salvar'])){
     $potencia = addslashes($_POST['potencia']);
     $voltagem = addslashes($_POST['voltagem']);
     $amperagem =  addslashes($_POST['amperagem']);
-	$bitola = addslashes($_POST['bitola']);
-	$fios = $_POST['fios'];
-    $espiras = implode(", ", $_POST["espiras"]);
+	$bitolaP = addslashes($_POST['bitolaP']);
+	$fiosP = $_POST['fiosP'];
+    $espirasP = implode("/ ", $_POST["espirasP"]);
+    $bitolaA = addslashes($_POST['bitolaA']);
+	$fiosA = $_POST['fiosA'];
+    $espirasA = implode("/ ", $_POST["espirasA"]);
     $marca = addslashes($_POST['marca']);
     $rpm = addslashes($_POST['rpm']);
     $rotacao = addslashes($_POST['rotacao']);
@@ -204,9 +263,9 @@ if(isset($_POST['salvar'])){
     $oldimage = $motor['imagem'];
 
     if($sistema != 'hide' && !empty($cliente) && !empty($voltagem) && !empty($potencia) 
-    && !empty($amperagem) && !empty($marca) && !empty($bitola) && !empty($fios) 
-    && !empty($espiras) && !empty($rpm) && $rotacao != 'hide'
-    && $ligacao != 'hide' && $camada != 'hide'){
+    && !empty($amperagem) && !empty($marca) && !empty($bitolaP) && !empty($fiosP) 
+    && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
+    && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide'){
         if($m->msgErro == ""){
             if(!empty($images)){
                 $pic=rand(1000, 1000000).".".$imgExt;
@@ -215,8 +274,9 @@ if(isset($_POST['salvar'])){
             } else {
                 $pic = $oldimage;
             }
-            if($m->editarMotorCP($id,$sistema,$marca,$potencia,$voltagem,$amperagem,$bitola,
-            $fios,$espiras,$rpm,$rotacao, $ligacao, $camada, $informacoes, $pic,$cliente)){
+            if($m->editarMotorCP($id,$sistema,$marca,$potencia,$voltagem,$amperagem,$bitolaP,
+            $fiosP,$espirasP, $bitolaA,$fiosA,$espirasA,$rpm,$rotacao, $ligacao, 
+            $camada, $informacoes, $pic,$cliente)){
                 header("location: pesquisa.php");
                 exit();
             }

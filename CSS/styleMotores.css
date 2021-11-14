@@ -143,10 +143,15 @@ header a:hover {
 }
 
 .action {
-    padding: 7px 0;
+    padding: 8px 0;
 }
 
 .action img {
     width: 20px;
     height: 20px;
+}
+
+#info {
+    margin-right: auto;
+    padding: 0 230px;
 }

@@ -3,7 +3,7 @@
     if(!isset($_SESSION['id_user'])){
         header("location: index.php");
         exit;
-    }  
+    } 
     require_once 'CLASSES/Motores.php';
     $m = new Motor;
 
@@ -16,13 +16,7 @@
 
     include 'Conecta.php';
 
-    $motor = $m->seleciona($id);
-
-    $oldimage = $motor['imagem'];
-    $upload_dir='upload/';
-    unlink($upload_dir.$oldimage);
-
-    $m->deletaCP($id);
+    $m->deletaSP($id);
 
     header("location: pesquisa.php");
 

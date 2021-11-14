@@ -26,7 +26,7 @@ if(!isset($_SESSION['id_user'])){
     <link rel="stylesheet" type="text/css" href="CSS/stylecadMotores.css" />
     <link rel="icon" href="images/icon.jpg">
 
-    <title>Pagina de Cadastro</title>
+    <title>Pagina de Cadastro de Motores</title>
 </head>
 <body>
     <header>
@@ -38,7 +38,12 @@ if(!isset($_SESSION['id_user'])){
         <form method="POST" id="form" enctype="multipart/form-data">
             <div class="box" id="box">
                 <div class="content">
-                    <div class="left">
+                    
+                    <div class="row">
+                        <div class="input">
+                            <label>Cliente</label>
+                            <input type="text" name="cliente" id="cliente">
+                        </div>
                         <div class="input">
                             <label>Sistema</label>
                             <select name="sistema" id="sistema">
@@ -47,6 +52,9 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="Trifásico">Trifásico</option>
                             </select>
                         </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="input">
                             <label>Potência</label>
                             <input type="text" name="potencia" id="potencia">
@@ -55,44 +63,23 @@ if(!isset($_SESSION['id_user'])){
                             <label>Voltagem</label>
                             <input type="text" name="voltagem" id="voltagem">
                         </div>
-                        <div class="input">
-                            <label>Amperagem</label>
-                            <input type="text" name="amperagem" id="amperagem">
-                        </div>
-                        <div class="input">
-                            <label>Nº Bitola</label>
-                            <input type="text" name="bitola" id="bitola">
-                        </div>
-                        <div class="input">
-                            <label>Nº de Fios</label>
-                            <input type="number" name="fios" id="fios">
-                        </div>
-                        <div class="input" id="inputespiras">
-                            <label>Nº de Espiras</label>
-                            <div class="box-add">
-                                <div class="field">
-                                    <input type="textbox" name="espiras[]" id="espiras">
-                                </div>
-                                <div class="button-box">
-                                    <input type="button" name="submit" id="submit" value="+" onclick="add_more()">
-                                </div>
-                            </div>	
-                            <input type="hidden" id="box_count" value="1">
-                        </div>
-                        
                     </div>
-                    <div class="right">
-                        <div class="input">
-                            <label>Cliente</label>
-                            <input type="text" name="cliente" id="cliente">
-                        </div>
+
+                    <div class="row">
                         <div class="input">
                             <label>Marca</label>
                             <input type="text" name="marca" id="marca">
                         </div>
                         <div class="input">
+                            <label>Amperagem</label>
+                            <input type="text" name="amperagem" id="amperagem">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input">
                             <label>RPM</label>
-                            <input type="text" name="rpm" id="rpm">
+                            <input type="number" name="rpm" id="rpm">
                         </div>
                         <div class="input">
                             <label>Sentido de Rotação</label>
@@ -102,6 +89,9 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="Anti-Horário">Anti-horário</option>
                             </select>
                         </div>
+                    </div>
+                    
+                    <div class="row">
                         <div class="input">
                             <label>Esquema de ligação</label>
                             <select name="ligacao" id="ligacao">
@@ -117,8 +107,10 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="Única">Única</option>
                                 <option value="Dupla">Dupla</option>
                             </select>
-
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="input">
                             <label>Informações opcionais</label>
                             <input type="text" name="informacoes" id="informacoes">
@@ -130,6 +122,55 @@ if(!isset($_SESSION['id_user'])){
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="input">
+                            <label>Nº Bitola Principal</label>
+                            <input type="text" name="bitolaP" id="bitolaP">
+                        </div>
+                        <div class="input" id="bitolaA">
+                            <label>Nº Bitola Auxiliar</label>
+                            <input type="text" name="bitolaA" id="bitolaAux">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input">
+                            <label>Nº de Fios Principal</label>
+                            <input type="number" name="fiosP" id="fiosP">
+                        </div>
+                        <div class="input" id="inputfiosA">
+                            <label>Nº de Fios Auxiliar</label>
+                            <input type="number" name="fiosA" id="fiosA">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input" id="inputespiras">
+                            <label>Nº de Espiras Principal</label>
+                            <div class="box-add">
+                                <div class="field">
+                                    <input type="number" name="espirasP[]" id="espirasP">
+                                </div>
+                                <div class="button-box">
+                                    <input type="button" name="submit" id="submit" value="+" onclick="add_more()">
+                                </div>
+                            </div>	
+                            <input type="hidden" id="box_count" value="1">
+                        </div>
+                        <div class="input" id="inputespirasA">
+                            <label>Nº de Espiras Auxiliar</label>
+                            <div class="box-add">
+                                <div class="field">
+                                    <input type="number" name="espirasA[]" id="espirasA">
+                                </div>
+                                <div class="button-box">
+                                    <input type="button" name="submitA" id="submit2A" value="+" onclick="add_more2()">
+                                </div>
+                            </div>	
+                            <input type="hidden" id="box_countA" value="1">
+                        </div>
+                    </div>    
                 </div>
                 <small id="text-error"></small>
                 <div class="btn">
@@ -140,19 +181,15 @@ if(!isset($_SESSION['id_user'])){
     </div>
     <script src="SCRIPT/jquery-1.4.1.min.js"></script>
     <script>
-        var tamanho = 630;
-        $('#imagem').change(function() {
-            var i = $(this).prev('label').clone();
-            var file = $('#imagem')[0].files[0].name;
-            $(this).prev('label').text(file);
-        });
+        var tamanho = 700;
+
         function add_more(){
             var box_count=jQuery("#box_count").val();
             if(box_count < 6){
                 box_count++;
                 tamanho+=5;
                 jQuery("#box_count").val(box_count);
-                jQuery("#inputespiras").append('<div class="box-add" id="box_loop_'+box_count+'"><div class="field"><input type="text" name="espiras[]" id="espiras"></div><div class="button-box-r"><input type="button" name="submit" id="submit" value="X" onclick=remove_more("'+box_count+'")></div></div>');   
+                jQuery("#inputespiras").append('<div class="box-add" id="box_loop_'+box_count+'"><div class="field"><input type="number" name="espirasP[]" id="espiras"></div><div class="button-box-r"><input type="button" name="submit" id="submit" value="X" onclick=remove_more("'+box_count+'")></div></div>');   
                 document.getElementById("box").style.height=tamanho+"px";
             }
         }
@@ -164,6 +201,25 @@ if(!isset($_SESSION['id_user'])){
             jQuery("#box_count").val(box_count);
             document.getElementById("box").style.height=tamanho+"px";
         }
+
+        function add_more2(){
+            var box_count2=jQuery("#box_countA").val();
+            if(box_count2 < 6){
+                box_count2++;
+                tamanho+=5;
+                jQuery("#box_countA").val(box_count2);
+                jQuery("#inputespirasA").append('<div class="box-add" id="box_loop2_'+box_count2+'"><div class="field"><input type="number" name="espirasA[]" id="espirasA"></div><div class="button-box-r"><input type="button" name="submitA" id="submitA" value="X" onclick=remove_more2("'+box_count2+'")></div></div>');   
+                document.getElementById("box").style.height=tamanho+"px";
+            }
+        }
+        function remove_more2(box_count2){
+            jQuery("#box_loop2_"+box_count2).remove();
+            var box_count2=jQuery("#box_countA").val();
+            box_count2--;
+            tamanho-=5;
+            jQuery("#box_countA").val(box_count2);
+            document.getElementById("box").style.height=tamanho+"px";
+        }
     </script>
     <script src="SCRIPT/scriptcadmotor.js"></script>
 </body>
@@ -173,9 +229,12 @@ if(isset($_POST['salvar'])){
     $potencia = addslashes($_POST['potencia']);
     $voltagem = addslashes($_POST['voltagem']);
     $amperagem =  addslashes($_POST['amperagem']);
-	$bitola = addslashes($_POST['bitola']);
-	$fios = $_POST['fios'];
-    $espiras = implode(", ", $_POST["espiras"]);
+	$bitolaP = addslashes($_POST['bitolaP']);
+	$fiosP = $_POST['fiosP'];
+    $espirasP = implode("/ ", $_POST["espirasP"]);
+    $bitolaA = addslashes($_POST['bitolaA']);
+	$fiosA = $_POST['fiosA'];
+    $espirasA = implode("/ ", $_POST["espirasA"]);
     $marca = addslashes($_POST['marca']);
     $rpm = addslashes($_POST['rpm']);
     $rotacao = addslashes($_POST['rotacao']);
@@ -191,16 +250,17 @@ if(isset($_POST['salvar'])){
     $upload_dir='upload/';
     $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
     $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
-    $pic=rand(1000, 1000000).".".$imgExt;
-    move_uploaded_file($tmp_dir, $upload_dir.$pic);  
+    $pic=rand(1000, 1000000).".".$imgExt; 
 
     if($sistema != 'hide' && !empty($cliente) && !empty($voltagem) && !empty($potencia) 
-    && !empty($amperagem) && !empty($marca) && !empty($bitola) && !empty($fios) 
-    && !empty($espiras) && !empty($rpm) && $rotacao != 'hide'
-    && $ligacao != 'hide' && $camada != 'hide' && !empty($pic)){
+    && !empty($amperagem) && !empty($marca) && !empty($bitolaP) && !empty($fiosP) 
+    && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
+    && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide' && !empty($images)){
         if($m->msgErro == ""){
-            $m->cadastrar($sistema,$marca,$potencia,$voltagem,$amperagem,$bitola,
-            $fios,$espiras,$rpm,$rotacao, $ligacao, $camada, $informacoes, $pic,$cliente)
+            move_uploaded_file($tmp_dir, $upload_dir.$pic); 
+            $m->cadastrar($sistema,$marca,$potencia,$voltagem,$amperagem,$bitolaP,
+            $fiosP,$espirasP, $bitolaA,$fiosA,$espirasA,$rpm,$rotacao, $ligacao, 
+            $camada, $informacoes, $pic,$cliente)
             ?>
                 <script>
                     text.style.color = "green";
