@@ -144,11 +144,11 @@ if(!isset($_SESSION['id_user'])){
 </body>
 <?php
 if(isset($_POST['salvar'])){
-	$bitola = addslashes($_POST['bitola']);
-	$fios = $_POST['fios'];
+	$bitola = addslashes(strip_tags($_POST['bitola']));
+	$fios = strip_tags($_POST['fios']);
     $espiras = implode("/ ", $_POST["espiras"]);
-    $informacoes = addslashes($_POST['informacoes']);
-    $cliente = addslashes($_POST['cliente']);
+    $informacoes = addslashes(strip_tags($_POST['informacoes']));
+    $cliente = addslashes(strip_tags($_POST['cliente']));
     
     $images=$_FILES['imagem']['name'];
     $tmp_dir=$_FILES['imagem']['tmp_name'];

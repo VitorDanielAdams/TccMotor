@@ -225,23 +225,23 @@ if(!isset($_SESSION['id_user'])){
 </body>
 <?php
 if(isset($_POST['salvar'])){
-    $sistema =  addslashes($_POST['sistema']);
-    $potencia = addslashes($_POST['potencia']);
-    $voltagem = addslashes($_POST['voltagem']);
-    $amperagem =  addslashes($_POST['amperagem']);
-	$bitolaP = addslashes($_POST['bitolaP']);
-	$fiosP = $_POST['fiosP'];
+    $sistema =  addslashes(strip_tags($_POST['sistema']));
+    $potencia = addslashes(strip_tags($_POST['potencia']));
+    $voltagem = addslashes(strip_tags($_POST['voltagem']));
+    $amperagem =  addslashes(strip_tags($_POST['amperagem']));
+	$bitolaP = addslashes(strip_tags($_POST['bitolaP']));
+	$fiosP = strip_tags($_POST['fiosP']);
     $espirasP = implode("/ ", $_POST["espirasP"]);
-    $bitolaA = addslashes($_POST['bitolaA']);
-	$fiosA = $_POST['fiosA'];
+    $bitolaA = addslashes(strip_tags($_POST['bitolaA']));
+	$fiosA =strip_tags( $_POST['fiosA']);
     $espirasA = implode("/ ", $_POST["espirasA"]);
-    $marca = addslashes($_POST['marca']);
-    $rpm = addslashes($_POST['rpm']);
-    $rotacao = addslashes($_POST['rotacao']);
-    $ligacao = addslashes($_POST['ligacao']);
-    $camada = addslashes($_POST['camada']);
-    $informacoes = addslashes($_POST['informacoes']);
-    $cliente = addslashes($_POST['cliente']);
+    $marca = addslashes(strip_tags($_POST['marca']));
+    $rpm = addslashes(strip_tags($_POST['rpm']));
+    $rotacao = addslashes(strip_tags($_POST['rotacao']));
+    $ligacao = addslashes(strip_tags($_POST['ligacao']));
+    $camada = addslashes(strip_tags($_POST['camada']));
+    $informacoes = addslashes(strip_tags($_POST['informacoes']));
+    $cliente = addslashes(strip_tags($_POST['cliente']));
     
     $images=$_FILES['imagem']['name'];
     $tmp_dir=$_FILES['imagem']['tmp_name'];

@@ -98,11 +98,11 @@ $funcionarios = $u->seleciona($id);
 </body>
 <?php
 if(isset($_POST['salvar'])){
-    $codigo = $_POST['codigo'];
-    $nome = addslashes($_POST['nome']);
-    $cpf = addslashes($_POST['cpf']);
-    $telefone = $_POST['telefone'];
-    $cargo = addslashes($_POST['cargo']);
+    $codigo = strip_tags($_POST['codigo']);
+    $nome = addslashes(strip_tags($_POST['nome']));
+    $cpf = addslashes(strip_tags($_POST['cpf']));
+    $telefone = strip_tags($_POST['telefone']);
+    $cargo = addslashes(strip_tags($_POST['cargo']));
 
     if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone)){
         if($u->msgErro == ""){

@@ -95,13 +95,13 @@ include 'Conecta.php';
 </body>
 <?php
 if(isset($_POST['salvar'])){
-    $codigo = $_POST['codigo'];
-    $nome = addslashes($_POST['nome']);
-    $cpf = addslashes($_POST['cpf']);
-    $telefone = $_POST['telefone'];
-	$password = addslashes($_POST['password']);
-	$confirmPassword = addslashes($_POST['confirmPassword']);
-    $cargo = addslashes($_POST['cargo']);
+    $codigo = strip_tags($_POST['codigo']);
+    $nome = addslashes(strip_tags($_POST['nome']));
+    $cpf = addslashes(strip_tags($_POST['cpf']));
+    $telefone = strip_tags($_POST['telefone']);
+	$password = addslashes(strip_tags($_POST['password']));
+	$confirmPassword = addslashes(strip_tags($_POST['confirmPassword']));
+    $cargo = addslashes(strip_tags($_POST['cargo']));
 
     if(!empty($codigo) && !empty($nome) && !empty($cpf) && !empty($telefone) && $cargo != 'hide' 
 	&& !empty($password) && !empty($confirmPassword)){

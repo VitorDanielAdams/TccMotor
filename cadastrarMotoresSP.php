@@ -118,11 +118,11 @@ if(!isset($_SESSION['id_user'])){
 </body>
 <?php
 if(isset($_POST['salvar'])){
-	$bitola = addslashes($_POST['bitola']);
-	$fios = $_POST['fios'];
+	$bitola = addslashes(strip_tags($_POST['bitola']));
+	$fios = strip_tags($_POST['fios']);
     $espiras = implode(", ", $_POST["espiras"]);
-    $informacoes = addslashes($_POST['informacoes']);
-    $cliente = addslashes($_POST['cliente']);
+    $informacoes = addslashes(strip_tags($_POST['informacoes']));
+    $cliente = addslashes(strip_tags($_POST['cliente']));
     
     $images=$_FILES['imagem']['name'];
     $tmp_dir=$_FILES['imagem']['tmp_name'];
@@ -132,7 +132,6 @@ if(isset($_POST['salvar'])){
     $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
     $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
     $pic=rand(1000, 1000000).".".$imgExt;
-    
 
     if(!empty($cliente) && !empty($bitola) && !empty($fios) && !empty($espiras) && !empty($images)){
         if($m->msgErro == ""){
