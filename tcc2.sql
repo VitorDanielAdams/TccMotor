@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11-Nov-2021 às 02:14
+-- Tempo de geração: 14-Nov-2021 às 23:43
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 8.0.8
 
@@ -36,9 +36,12 @@ CREATE TABLE `motor` (
   `potencia` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `voltagem` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amperagem` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bitolas` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fios` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `espiras` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bitolasP` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fiosP` int(30) NOT NULL,
+  `espirasP` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bitolaAux` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fiosAux` int(30) NOT NULL,
+  `espirasAux` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `marca` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rpm` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rotacao` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -52,9 +55,9 @@ CREATE TABLE `motor` (
 -- Extraindo dados da tabela `motor`
 --
 
-INSERT INTO `motor` (`id`, `cliente`, `sistema`, `potencia`, `voltagem`, `amperagem`, `bitolas`, `fios`, `espiras`, `marca`, `rpm`, `rotacao`, `ligacao`, `camada`, `informacoes`, `imagem`) VALUES
-(1, 'test', 'Monofásico', '120', '223', '155', '12', '30', '3, 5', 'marca teste', '323', 'Horário', 'Paralelo', 'Única', '', '504045.jpg'),
-(2, 'dfsdfs', 'Trifásico', 'fghfg', 'fsdfs', 'fgddfg', 'gfdfdsd', '32', '32', 'new', 'fsfsd', 'Anti-Horário', 'Série', 'Única', '', '780907.jpg');
+INSERT INTO `motor` (`id`, `cliente`, `sistema`, `potencia`, `voltagem`, `amperagem`, `bitolasP`, `fiosP`, `espirasP`, `bitolaAux`, `fiosAux`, `espirasAux`, `marca`, `rpm`, `rotacao`, `ligacao`, `camada`, `informacoes`, `imagem`) VALUES
+(1, 'dfsdfs', 'Trifásico', 'fghfg', 'fsdfs', 'fgddfg', 'gfdfdsd', 32, '32', '', 0, '', 'new', 'fsfsd', 'Anti-Horário', 'Série', 'Única', '', '780907.jpg'),
+(2, 'test', 'Trifásico', 'fghfg', '234V', '110A', '12-5532', 4, '434/ 43', '5533', 54545, '665, 5', 'new', '323', 'Horário', 'Paralelo', 'Única', 'rew', '934335.jpg');
 
 -- --------------------------------------------------------
 
@@ -65,29 +68,19 @@ INSERT INTO `motor` (`id`, `cliente`, `sistema`, `potencia`, `voltagem`, `ampera
 CREATE TABLE `motorsp` (
   `id` int(11) NOT NULL,
   `cliente` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sistema` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `potencia` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `voltagem` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `amperagem` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bitolas` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fios` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `espiras` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `marca` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rpm` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rotacao` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ligacao` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `camada` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `informacoes` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `imagem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `obs` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
+  `imagem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `motorsp`
 --
 
-INSERT INTO `motorsp` (`id`, `cliente`, `sistema`, `potencia`, `voltagem`, `amperagem`, `bitolas`, `fios`, `espiras`, `marca`, `rpm`, `rotacao`, `ligacao`, `camada`, `informacoes`, `imagem`, `obs`) VALUES
-(1, 'test2', 'Monofásico', '123', '321', '321', '23', '34', '34', 'new', '432', 'Horário', 'Paralelo', 'Dupla', '', '913227.jpg', 'dfdsfs');
+INSERT INTO `motorsp` (`id`, `cliente`, `bitolas`, `fios`, `espiras`, `informacoes`, `imagem`) VALUES
+(1, 'test', 'gfdfdsd', '43', '32', 'sdfsdffgdfdfg', '401391.jpg');
 
 -- --------------------------------------------------------
 
