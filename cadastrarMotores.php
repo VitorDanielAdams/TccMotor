@@ -262,10 +262,10 @@ if(isset($_POST['salvar'])){
     && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
     && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide' && !empty($images)){
         if($m->msgErro == ""){
-            $potencia .= " kW";
-            $voltagem .= " V";
-            $amperagem .= " A";
-            $rpm.= " RPM";
+            $potencia .= "kW";
+            $voltagem .= "V";
+            $amperagem .= "A";
+            $rpm.= "RPM";
             move_uploaded_file($tmp_dir, $upload_dir.$pic); 
             if($m->cadastrar($sistema,$marca,$potencia,$voltagem,$amperagem,$bitolaP,
             $fiosP,$espirasP, $bitolaA,$fiosA,$espirasA,$rpm,$rotacao, $ligacao, 

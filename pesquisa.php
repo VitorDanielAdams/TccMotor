@@ -42,10 +42,34 @@ if(!isset($_SESSION['id_user'])){
             </form>
         </div>
         <?php
-           
-            $motor = $m->mostrarMotorCP();
+            if (isset($_GET['busca']) && !empty($_GET['busca'])) {
+               
+                $busca = addslashes($_GET['busca']);
+               
+                $motor = $m->mostraPesquisa($busca);
+                $motorsp = $m->mostraPesquisaSP($busca);
+                
+                if($motor == false && $motorsp == false){
+                    ?>
+                        <div class="nosearch">
+                            <h1>Nenhum resultado encontrado <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
+                            <div class="paginacao">
+                                <?php
+                                    echo "<a href='pesquisa.php' class='pag'>Voltar</a>";
+                                ?>
+                            </div>
+                        </div>
+                    <?php
+                } 
+            } else {
+
+                $motor = $m->mostrarMotorCP();
+                $motorsp = $m->mostrarMotorSP();
+
+            }
 
             foreach ($motor as $mcp){
+
         ?>
         <div class="item">
             <a href='mostrarMotor.php?id=<?= $mcp['id'] ?>'>
@@ -106,9 +130,9 @@ if(!isset($_SESSION['id_user'])){
         </div>
         <?php } ?>
         <?php
-            $motor = $m->mostrarMotorSP();
 
-            foreach ($motor as $msp){
+            foreach ($motorsp as $msp){
+                
         ?>
         <div class="item">
             <a href='mostrarMotorSP.php?id=<?= $msp['id'] ?>'>

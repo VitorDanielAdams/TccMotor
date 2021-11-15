@@ -122,6 +122,33 @@ Class Motor{
         return $motor;
     }
 
+    public function mostraPesquisa($busca){
+
+        global $pdo;
+
+        $sql = "SELECT * FROM motor WHERE cliente LIKE '%$busca%' OR marca LIKE '%$busca%' 
+        OR voltagem = '$busca' OR amperagem = '$busca' OR rpm = '$busca'";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+            
+        $motor = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $motor;
+    }
+
+    public function mostraPesquisaSP($busca){
+
+        global $pdo;
+
+        $sql = "SELECT * FROM motorsp WHERE cliente LIKE '%$busca%'";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+            
+        $motor = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        return $motor;
+    }
+
     public function seleciona($id){
 
         global $pdo;

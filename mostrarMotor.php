@@ -44,96 +44,100 @@ if(!isset($_SESSION['id_user'])){
 
     <div class="container">
         <div class="box">
-            <div class="titulo">Motor</div>
+            <div class="titulo">Motor Com Placa</div>
             <div class="content">
                 <div class="imagem">
-                    <img src="upload/<?= $mcp['imagem']?>" >
+                    <img src="upload/<?= $motor['imagem']?>" >
                 </div> 
                 <div class="row">
                     <div class="text">
-                        <h2>Cliente</h2>
-                        <h3></h3>
+                        <h2>Cliente:</h2>
+                        <h3><?= $motor['cliente']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Sistema</h2>
-                        <h3></h3>
+                        <h2>Sistema:</h2>
+                        <h3><?= $motor['sistema']?></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text">
-                        <h2>Marca</h2>
-                        <h3></h3>
+                        <h2>Marca:</h2>
+                        <h3><?= $motor['marca']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Ligação</h2>
-                        <h3></h3>
+                        <h2>Ligação:</h2>
+                        <h3><?= $motor['ligacao']?></h3>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="text">
-                        <h2>Potência</h2>
-                        <h3></h3>
+                        <h2>Potência:</h2>
+                        <h3><?= $motor['potencia']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Voltagem</h2>
-                        <h3></h3>
+                        <h2>Voltagem:</h2>
+                        <h3><?= $motor['voltagem']?></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text">
-                        <h2>Amperagem</h2>
-                        <h3></h3>
+                        <h2>Amperagem:</h2>
+                        <h3><?= $motor['amperagem']?></h3>
                     </div>
                     <div class="text">
-                        <h2>RPM</h2>
-                        <h3></h3>
+                        <h2>RPM:</h2>
+                        <h3><?= $motor['rpm']?></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text">
-                        <h2>Rotação</h2>
-                        <h3></h3>
+                        <h2>Rotação:</h2>
+                        <h3><?= $motor['rotacao']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Camada</h2>
-                        <h3></h3>
+                        <h2>Camada:</h2>
+                        <h3><?= $motor['camada']?></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text">
-                        <h2>Nº de Bitola Principal</h2>
-                        <h3></h3>
+                        <h2>Nº de Bitola Principal:</h2>
+                        <h3><?= $motor['bitolasP']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Nº de Bitola Auxiliar</h2>
-                        <h3></h3>
+                        <h2>Nº de Bitola Auxiliar:</h2>
+                        <h3><?= $motor['bitolaAux']?></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text">
-                        <h2>Nº de Fios Principal</h2>
-                        <h3></h3>
+                        <h2>Nº de Fios Principal:</h2>
+                        <h3><?= $motor['fiosP']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Nº de Fios Auxiliar</h2>
-                        <h3></h3>
+                        <h2>Nº de Fios Auxiliar:</h2>
+                        <h3><?= $motor['fiosAux']?></h3>
                     </div>
                 </div>
                 <div class="row">
                     <div class="text">
-                        <h2>Nº de Espiras Principal</h2>
-                        <h3></h3>
+                        <h2>Nº de Espiras Principal:</h2>
+                        <h3><?= $motor['espirasP']?></h3>
                     </div>
                     <div class="text">
-                        <h2>Nº de Espiras Auxiliar</h2>
-                        <h3></h3>
+                        <h2>Nº de Espiras Auxiliar:</h2>
+                        <h3><?= $motor['espirasAux']?></h3>
                     </div>
                 </div>
+                <?php 
+                    if(!empty($motor['informacoes'])){
+                ?>
                 <div class="center">
-                    <h2>Informações Adicionais</h2>
-                    <h3></h3>
+                    <h2>Informações Adicionais:</h2>
+                    <h3><?= $motor['informacoes']?></h3>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </div>

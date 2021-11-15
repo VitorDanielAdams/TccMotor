@@ -275,10 +275,10 @@ if(isset($_POST['salvar'])){
     && !empty($amperagem) && !empty($marca) && !empty($bitolaP) && !empty($fiosP) 
     && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
     && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide'){
-        $potencia .= " kW";
-        $voltagem .= " V";
-        $amperagem .= " A";
-        $rpm.= " RPM";
+        $potencia .= "kW";
+        $voltagem .= "V";
+        $amperagem .= "A";
+        $rpm.= "RPM";
         if($m->msgErro == ""){
             if(!empty($images)){
                 $pic=rand(1000, 1000000).".".$imgExt;

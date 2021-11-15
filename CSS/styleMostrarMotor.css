@@ -45,15 +45,14 @@ header a:hover {
 
 .container {
     width: 100%;
-    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .box {
-    width: 800px;
-    height: 600px;
+    width: 900px;
+    min-height: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -61,36 +60,37 @@ header a:hover {
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgb(153, 153, 153);
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .titulo {
-    padding: 20px 0;
-    color: rgb(82, 82, 82);
+    margin-top: 20px;
+    color: #721717;
     font: bold 25px Poppins;
 }
 
-.img {
+.imagem {
     width: 200px;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-.img img {
+.imagem img {
     max-width: 120px;
 }
 
 .content {
     width: 100%;
-    min-height: 50vh;
+    height: 560px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 120px;
+    padding: 0 80px;
 }
 
 .row {
@@ -98,11 +98,11 @@ header a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 30px;
 }
 
 .text {
-    width: 200px;
+    width: 250px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -116,4 +116,27 @@ header a:hover {
 .text h3 {
     font: 14px Poppins;
     color: #838383;
+}
+
+.center {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+}
+
+.center h2 {
+    font: bold 18px Poppins;
+    color: rgb(82, 82, 82);
+}
+
+.center h3 {
+    width: 500px;
+    font: 14px Poppins;
+    color: #838383;
+    text-align: center;
+    word-wrap: break-word;
 }

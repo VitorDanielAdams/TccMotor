@@ -77,7 +77,7 @@ input:-webkit-autofill:active {
 }
 
 input:-webkit-autofill {
-    -webkit-text-fill-color: #727272 !important;
+    -webkit-text-fill-color: #e2e2e2 !important;
 }
 
 .form button {
@@ -160,4 +160,36 @@ input:-webkit-autofill {
 .action img {
     width: 20px;
     height: 20px;
+}
+
+.nosearch {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.nosearch h1 {
+    font: 35px Poppins;
+    color: #252525;
+}
+
+.pag {
+    display: inline-flex;
+    border-radius: 5px;
+    padding: 10px 16px;
+    margin-top: 1rem;
+    margin-right: 10px;
+    font: 18px Poppins;
+    color: #252525;
+    background-color: rgb(245, 245, 245);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.pag:hover {
+    background-color: #fff;
+    opacity: 1;
 }
