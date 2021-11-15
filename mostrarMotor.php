@@ -1,7 +1,21 @@
 <?php 
+session_start();
+if(!isset($_SESSION['id_user'])){
+    header("location: index.php");
+    exit;
+} else { 
+    require_once 'CLASSES/Motores.php';
+    $m = new Motor;
+    include 'Conecta.php';
 
-
-
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+    }	else {
+        echo 'Código não informado!';
+        exit;
+    }
+    
+    $motor = $m->seleciona($id);
 ?>
 
 <!DOCTYPE html>
@@ -10,9 +24,119 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="CSS/styleMostrarMotor.css" />
+    <link rel="icon" href="images/icon.jpg">
+
     <title>Detalhes do Motor</title>
 </head>
 <body>
-    
+    <header>
+        <img src="images/logo.png">
+        <a href="pesquisa.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
+    </header>
+
+    <div class="container">
+        <div class="box">
+            <div class="titulo">Motor</div>
+            <div class="content">
+                <div class="imagem">
+                    <img src="upload/<?= $mcp['imagem']?>" >
+                </div> 
+                <div class="row">
+                    <div class="text">
+                        <h2>Cliente</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Sistema</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <h2>Marca</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Ligação</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="text">
+                        <h2>Potência</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Voltagem</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <h2>Amperagem</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>RPM</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <h2>Rotação</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Camada</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <h2>Nº de Bitola Principal</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Nº de Bitola Auxiliar</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <h2>Nº de Fios Principal</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Nº de Fios Auxiliar</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text">
+                        <h2>Nº de Espiras Principal</h2>
+                        <h3></h3>
+                    </div>
+                    <div class="text">
+                        <h2>Nº de Espiras Auxiliar</h2>
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="center">
+                    <h2>Informações Adicionais</h2>
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<?php } ?>

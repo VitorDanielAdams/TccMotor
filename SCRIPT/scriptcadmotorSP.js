@@ -1,10 +1,12 @@
 const form = document.getElementById('form');
-const bitola = document.getElementById('bitola');
-const fios = document.getElementById('fios');
-const espiras = document.getElementById('espiras');
+const bitola = document.getElementById('bitolaP');
+const fios = document.getElementById('fiosP');
+const espiras = document.getElementById('espirasP');
+const bitolaAux = document.getElementById('bitolaAux');
+const fiosA = document.getElementById('fiosA');
+const espirasA = document.getElementById('espirasA');
 const img = document.getElementById('imagem');
 const cliente = document.getElementById('cliente');
-
 
 const text = document.getElementById("text-error");
 
@@ -15,6 +17,9 @@ function checkInputs() {
     const bitolaValue = bitola.value.trim();
     const fiosValue = fios.value.trim();
     const espirasValue = espiras.value.trim();
+    const bitolaAValue = bitolaAux.value.trim();
+    const fiosAValue = fiosA.value.trim();
+    const espirasAValue = espirasA.value.trim();
     const imgValue = img.value.trim();
     const clienteValue = cliente.value.trim();
 
@@ -36,6 +41,24 @@ function checkInputs() {
         setSuccessFor(espiras);
     }
 
+    if (bitolaAValue === '') {
+        setErrorFor(bitolaAux);
+    } else {
+        setSuccessFor(bitolaAux);
+    }
+
+    if (fiosAValue === '') {
+        setErrorFor(fiosA);
+    } else {
+        setSuccessFor(fiosA);
+    }
+
+    if (espirasAValue === '') {
+        setErrorFor(espirasA);
+    } else {
+        setSuccessFor(espirasA);
+    }
+
     if (imgValue === '') {
         setErrorFor(img);
     } else {
@@ -48,7 +71,8 @@ function checkInputs() {
         setSuccessFor(cliente);
     }
 
-    if (bitolaValue !== '' && fiosValue !== '' && espirasValue !== '' && imgValue !== '' && clienteValue !== '') {
+    if (bitolaValue !== '' && fiosValue !== '' && espirasValue !== '' && bitolaAValue !== '' &&
+        fiosAValue !== '' && espirasAValue !== '' && imgValue !== '' && clienteValue !== '') {
         return true;
     } else {
         return false;

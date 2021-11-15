@@ -111,19 +111,19 @@ if(!isset($_SESSION['id_user'])){
             foreach ($motor as $msp){
         ?>
         <div class="item">
-            <a href='mostrarMotor.php?id=<?= $msp['id'] ?>'>
+            <a href='mostrarMotorSP.php?id=<?= $msp['id'] ?>'>
                 <div class="imagem">
                     <img src="upload/<?= $msp['imagem']?>" >
                 </div>
             </a>
             <div class="content">   
                 <div class="row">
-                    <div class="text">
+                    <div class="textSP">
                         <div class="title"><h2>Cliente</h2></div>
                         <h4><?= $msp['cliente'] ?></h4>
                     </div>
                    
-                    <div class="text" id="info">
+                    <div class="textSP" id="info">
                         <div class="title"><h2>Informações</h2></div>
                         <h4><?= $msp['informacoes'] ?></h4>
                     </div>
@@ -136,19 +136,19 @@ if(!isset($_SESSION['id_user'])){
                 </div>
             
                 <div class="row">
-                    <div class="text">
-                        <div class="title"><h2>Nº de Bitola</h2></div>
-                        <h4><?= $msp['bitolas'] ?></h4>
+                    <div class="textSP">
+                        <div class="title"><h2>Nº de Bitola Principal</h2></div>
+                        <h4><?= $msp['bitolasP'] ?></h4>
                     </div>
 
-                    <div class="text">
-                        <div class="title"><h2>Nº de Fios</h2></div>
-                        <h4><?= $msp['fios'] ?></h4>
+                    <div class="textSP">
+                        <div class="title"><h2>Nº de Fios Principal</h2></div>
+                        <h4><?= $msp['fiosP'] ?></h4>
                     </div>
 
-                    <div class="text">
-                        <div class="title"><h2>Nº de Espiras</h2></div>
-                        <h4><?= $msp['espiras'] ?></h4>
+                    <div class="textSP">
+                        <div class="title"><h2>Nº de Espiras Principal</h2></div>
+                        <h4><?= $msp['espirasP'] ?></h4>
                     </div>
 
                     <div class="action">

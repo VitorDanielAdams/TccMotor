@@ -16,6 +16,10 @@ if(!isset($_SESSION['id_user'])){
     }
 
     $motor = $m->seleciona($id);
+
+    function limpar_texto($str){ 
+        return preg_replace("/[^0-9]/", "", $str); 
+    }
 ?>
 <?php ob_start(); ?> 
 <!DOCTYPE html>
@@ -66,11 +70,11 @@ if(!isset($_SESSION['id_user'])){
                     <div class="row">
                         <div class="input">
                             <label>Potência</label>
-                            <input type="text" name="potencia" id="potencia" value="<?= $motor['potencia']?>">
+                            <input type="number" name="potencia" id="potencia" value="<?= limpar_texto($motor['potencia'])?>">
                         </div>
                         <div class="input">
                             <label>Voltagem</label>
-                            <input type="text" name="voltagem" id="voltagem" value="<?= $motor['voltagem']?>">
+                            <input type="number" name="voltagem" id="voltagem" value="<?= limpar_texto($motor['voltagem'])?>">
                         </div>
                     </div>
 
@@ -81,14 +85,14 @@ if(!isset($_SESSION['id_user'])){
                         </div>
                         <div class="input">
                             <label>Amperagem</label>
-                            <input type="text" name="amperagem" id="amperagem" value="<?= $motor['amperagem']?>">
+                            <input type="number" name="amperagem" id="amperagem" value="<?= limpar_texto($motor['amperagem'])?>">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input">
                             <label>RPM</label>
-                            <input type="number" name="rpm" id="rpm" value="<?= $motor['rpm']?>">
+                            <input type="number" name="rpm" id="rpm" value="<?= limpar_texto($motor['rpm'])?>">
                         </div>
                         <div class="input">
                             <label>Sentido de Rotação</label>
@@ -190,7 +194,12 @@ if(!isset($_SESSION['id_user'])){
     </div>
     <script src="SCRIPT/jquery-1.4.1.min.js"></script>
     <script>
-         var tamanho = 700;
+        $('#imagem').change(function() {
+            var i = $(this).prev('label').clone();
+            var file = $('#imagem')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+        var tamanho = 700;
 
         function add_more(){
             var box_count=jQuery("#box_count").val();
@@ -266,6 +275,10 @@ if(isset($_POST['salvar'])){
     && !empty($amperagem) && !empty($marca) && !empty($bitolaP) && !empty($fiosP) 
     && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
     && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide'){
+        $potencia .= " kW";
+        $voltagem .= " V";
+        $amperagem .= " A";
+        $rpm.= " RPM";
         if($m->msgErro == ""){
             if(!empty($images)){
                 $pic=rand(1000, 1000000).".".$imgExt;

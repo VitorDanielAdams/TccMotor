@@ -57,11 +57,11 @@ if(!isset($_SESSION['id_user'])){
                     <div class="row">
                         <div class="input">
                             <label>Potência</label>
-                            <input type="text" name="potencia" id="potencia">
+                            <input type="number" name="potencia" id="potencia">
                         </div>
                         <div class="input">
                             <label>Voltagem</label>
-                            <input type="text" name="voltagem" id="voltagem">
+                            <input type="number" name="voltagem" id="voltagem">
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@ if(!isset($_SESSION['id_user'])){
                         </div>
                         <div class="input">
                             <label>Amperagem</label>
-                            <input type="text" name="amperagem" id="amperagem">
+                            <input type="number" name="amperagem" id="amperagem">
                         </div>
                     </div>
 
@@ -181,6 +181,11 @@ if(!isset($_SESSION['id_user'])){
     </div>
     <script src="SCRIPT/jquery-1.4.1.min.js"></script>
     <script>
+        $('#imagem').change(function() {
+            var i = $(this).prev('label').clone();
+            var file = $('#imagem')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
         var tamanho = 700;
 
         function add_more(){
@@ -257,16 +262,28 @@ if(isset($_POST['salvar'])){
     && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
     && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide' && !empty($images)){
         if($m->msgErro == ""){
+            $potencia .= " kW";
+            $voltagem .= " V";
+            $amperagem .= " A";
+            $rpm.= " RPM";
             move_uploaded_file($tmp_dir, $upload_dir.$pic); 
-            $m->cadastrar($sistema,$marca,$potencia,$voltagem,$amperagem,$bitolaP,
+            if($m->cadastrar($sistema,$marca,$potencia,$voltagem,$amperagem,$bitolaP,
             $fiosP,$espirasP, $bitolaA,$fiosA,$espirasA,$rpm,$rotacao, $ligacao, 
-            $camada, $informacoes, $pic,$cliente)
-            ?>
-                <script>
-                    text.style.color = "green";
-                    text.innerText = "Cadastrado com sucesso";
-                </script>
-            <?php
+            $camada, $informacoes, $pic,$cliente)){
+                ?>
+                    <script>
+                        text.style.color = "green";
+                        text.innerText = "Cadastrado com sucesso";
+                    </script>
+                <?php
+            } else {
+                ?>
+                    <script>
+                        text.innerText = "Esse motor já foi cadastrado";
+                    </script>
+                <?php
+            }
+           
         } else {
             ?>
                 <script>

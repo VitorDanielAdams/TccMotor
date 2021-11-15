@@ -16,6 +16,12 @@
 
     include 'Conecta.php';
 
+    $motor = $m->selecionaSP($id);
+
+    $oldimage = $motor['imagem'];
+    $upload_dir='upload/';
+    unlink($upload_dir.$oldimage);
+
     $m->deletaSP($id);
 
     header("location: pesquisa.php");

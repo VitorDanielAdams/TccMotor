@@ -1,7 +1,10 @@
 const form = document.getElementById('form');
-const bitola = document.getElementById('bitola');
-const fios = document.getElementById('fios');
-const espiras = document.getElementById('espiras');
+const bitola = document.getElementById('bitolaP');
+const fios = document.getElementById('fiosP');
+const espiras = document.getElementById('espirasP');
+const bitolaAux = document.getElementById('bitolaAux');
+const fiosA = document.getElementById('fiosA');
+const espirasA = document.getElementById('espirasA');
 const cliente = document.getElementById('cliente');
 
 const text = document.getElementById("text-error");
@@ -13,6 +16,9 @@ function checkInputs() {
     const bitolaValue = bitola.value.trim();
     const fiosValue = fios.value.trim();
     const espirasValue = espiras.value.trim();
+    const bitolaAValue = bitolaAux.value.trim();
+    const fiosAValue = fiosA.value.trim();
+    const espirasAValue = espirasA.value.trim();
     const clienteValue = cliente.value.trim();
 
     if (bitolaValue === '') {
@@ -33,13 +39,32 @@ function checkInputs() {
         setSuccessFor(espiras);
     }
 
+    if (bitolaAValue === '') {
+        setErrorFor(bitolaAux);
+    } else {
+        setSuccessFor(bitolaAux);
+    }
+
+    if (fiosAValue === '') {
+        setErrorFor(fiosA);
+    } else {
+        setSuccessFor(fiosA);
+    }
+
+    if (espirasAValue === '') {
+        setErrorFor(espirasA);
+    } else {
+        setSuccessFor(espirasA);
+    }
+
     if (clienteValue === '') {
         setErrorFor(cliente);
     } else {
         setSuccessFor(cliente);
     }
 
-    if (bitolaValue !== '' && fiosValue !== '' && espirasValue !== '' && clienteValue !== '') {
+    if (bitolaValue !== '' && fiosValue !== '' && espirasValue !== '' && bitolaAValue !== '' &&
+        fiosAValue !== '' && espirasAValue !== '' && clienteValue !== '') {
         return true;
     } else {
         return false;

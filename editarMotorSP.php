@@ -61,12 +61,23 @@ if(!isset($_SESSION['id_user'])){
 
                     <div class="row">
                         <div class="input">
-                            <label>Nº Bitola </label>
-                            <input type="text" name="bitola" id="bitola" value="<?= $motor['bitolas']?>">
+                            <label>Nº Bitola Principal</label>
+                            <input type="text" name="bitolaP" id="bitolaP" value="<?= $motor['bitolasP']?>">
                         </div>
+                        <div class="input" id="bitolaA">
+                            <label>Nº Bitola Auxiliar</label>
+                            <input type="text" name="bitolaA" id="bitolaAux" value="<?= $motor['bitolaAux']?>">
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="input">
-                            <label>Nº de Fios</label>
-                            <input type="number" name="fios" id="fios" value="<?= $motor['fios']?>">
+                            <label>Nº de Fios Principal</label>
+                            <input type="number" name="fiosP" id="fiosP" value="<?= $motor['fiosP']?>">
+                        </div>
+                        <div class="input" id="inputfiosA">
+                            <label>Nº de Fios Auxiliar</label>
+                            <input type="number" name="fiosA" id="fiosA" value="<?= $motor['fiosAux']?>">
                         </div>
                     </div>
 
@@ -75,7 +86,7 @@ if(!isset($_SESSION['id_user'])){
                             <label>Nº de Espiras Principal</label>
                             <div class="box-add">
                                 <div class="field">
-                                    <input type="number" name="espiras[]" id="espiras" value="<?= $motor['espiras']?>">
+                                    <input type="text" name="espirasP[]" id="espirasP" value="<?= $motor['espirasP']?>">
                                 </div>
                                 <div class="button-box">
                                     <input type="button" name="submit" id="submit" value="+" onclick="add_more()">
@@ -83,6 +94,21 @@ if(!isset($_SESSION['id_user'])){
                             </div>	
                             <input type="hidden" id="box_count" value="1">
                         </div>
+                        <div class="input" id="inputespirasA">
+                            <label>Nº de Espiras Auxiliar</label>
+                            <div class="box-add">
+                                <div class="field">
+                                    <input type="text" name="espirasA[]" id="espirasA" value="<?= $motor['espirasAux']?>">
+                                </div>
+                                <div class="button-box">
+                                    <input type="button" name="submitA" id="submit2A" value="+" onclick="add_more2()">
+                                </div>
+                            </div>	
+                            <input type="hidden" id="box_countA" value="1">
+                        </div>
+                    </div>
+
+                    <div class="center">
                         <div class="input">
                             <div class="inputfile">
                                 <label for="imagem">Importar imagem</label>
@@ -100,7 +126,12 @@ if(!isset($_SESSION['id_user'])){
     </div>
     <script src="SCRIPT/jquery-1.4.1.min.js"></script>
     <script>
-         var tamanho = 700;
+        $('#imagem').change(function() {
+            var i = $(this).prev('label').clone();
+            var file = $('#imagem')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+        var tamanho = 700;
 
         function add_more(){
             var box_count=jQuery("#box_count").val();
@@ -144,9 +175,12 @@ if(!isset($_SESSION['id_user'])){
 </body>
 <?php
 if(isset($_POST['salvar'])){
-	$bitola = addslashes(strip_tags($_POST['bitola']));
-	$fios = strip_tags($_POST['fios']);
-    $espiras = implode("/ ", $_POST["espiras"]);
+	$bitolaP = addslashes(strip_tags($_POST['bitolaP']));
+	$fiosP = strip_tags($_POST['fiosP']);
+    $espirasP = implode("/ ", $_POST["espirasP"]);
+    $bitolaA = addslashes(strip_tags($_POST['bitolaA']));
+	$fiosA = strip_tags($_POST['fiosA']);
+    $espirasA = implode("/ ", $_POST["espirasA"]);
     $informacoes = addslashes(strip_tags($_POST['informacoes']));
     $cliente = addslashes(strip_tags($_POST['cliente']));
     
@@ -160,7 +194,8 @@ if(isset($_POST['salvar'])){
       
     $oldimage = $motor['imagem'];
 
-    if(!empty($cliente) && !empty($bitola) && !empty($fios) && !empty($espiras)){
+    if(!empty($cliente) && !empty($bitolaP) && !empty($fiosP) && !empty($espirasP) && !empty($bitolaA) 
+    && !empty($fiosA) && !empty($espirasA) ){
         if($m->msgErro == ""){
             if(!empty($images)){
                 $pic=rand(1000, 1000000).".".$imgExt;
@@ -169,7 +204,8 @@ if(isset($_POST['salvar'])){
             } else {
                 $pic = $oldimage;
             }
-            if($m->editarMotorSP($id,$bitola,$fios,$espiras,$informacoes,$pic,$cliente)){
+            if($m->editarMotorSP($id,$bitolaP,$fiosP,$espirasP,$bitolaA,$fiosA,
+            $espirasA,$informacoes,$pic,$cliente)){
                 header("location: pesquisa.php");
                 exit();
             }
