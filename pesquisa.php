@@ -120,7 +120,7 @@ if(!isset($_SESSION['id_user'])){
                         <h4><?= $mcp['rotacao'] ?></h4>
                     </div>
                      <div class="action">
-                        <a href='excluirMotor.php?id=<?= $mcp['id'] ?>'>
+                        <a href='excluirMotor.php?id=<?= $mcp['id'] ?>' onclick="return confirmation()" class='change' id='<?= $mcp['id'] ?>'>
                             <img src="./images/remove.svg" alt="remover">
                         </a>
                     </div>
@@ -176,7 +176,7 @@ if(!isset($_SESSION['id_user'])){
                     </div>
 
                     <div class="action">
-                        <a href='excluirMotorSP.php?id=<?= $msp['id'] ?>'>
+                        <a href='excluirMotorSP.php?id=<?= $msp['id'] ?>' onclick="return confirmation()" class='change' id='<?= $msp['id'] ?>'>
                             <img src="./images/remove.svg" alt="remover">
                         </a>
                     </div>
@@ -187,6 +187,7 @@ if(!isset($_SESSION['id_user'])){
         <?php } ?>
     </div>
 </body>
+<script src="SCRIPT/script.js"></script>
 </html>
 
 <?php 
