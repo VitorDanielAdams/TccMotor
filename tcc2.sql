@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Nov-2021 às 23:43
+-- Tempo de geração: 16-Nov-2021 às 20:38
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 8.0.8
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `tcc2`
 --
-CREATE DATABASE IF NOT EXISTS `tcc2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `tcc2`;
 
 -- --------------------------------------------------------
 
@@ -56,8 +54,7 @@ CREATE TABLE `motor` (
 --
 
 INSERT INTO `motor` (`id`, `cliente`, `sistema`, `potencia`, `voltagem`, `amperagem`, `bitolasP`, `fiosP`, `espirasP`, `bitolaAux`, `fiosAux`, `espirasAux`, `marca`, `rpm`, `rotacao`, `ligacao`, `camada`, `informacoes`, `imagem`) VALUES
-(1, 'dfsdfs', 'Trifásico', 'fghfg', 'fsdfs', 'fgddfg', 'gfdfdsd', 32, '32', '', 0, '', 'new', 'fsfsd', 'Anti-Horário', 'Série', 'Única', '', '780907.jpg'),
-(2, 'test', 'Trifásico', 'fghfg', '234V', '110A', '12-5532', 4, '434/ 43', '5533', 54545, '665, 5', 'new', '323', 'Horário', 'Paralelo', 'Única', 'rew', '934335.jpg');
+(1, 'test re', 'Monofásico', '23kW', '324V', '4343A', '544', 432, '432', '435', 545, '556', 'new', '32RPM', 'Horário', 'Série', 'Única', 'aaaaaa', '883719.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,9 +65,12 @@ INSERT INTO `motor` (`id`, `cliente`, `sistema`, `potencia`, `voltagem`, `ampera
 CREATE TABLE `motorsp` (
   `id` int(11) NOT NULL,
   `cliente` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bitolas` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fios` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `espiras` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bitolasP` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fiosP` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `espirasP` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bitolaAux` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fiosAux` int(30) NOT NULL,
+  `espirasAux` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `informacoes` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
   `imagem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -79,8 +79,8 @@ CREATE TABLE `motorsp` (
 -- Extraindo dados da tabela `motorsp`
 --
 
-INSERT INTO `motorsp` (`id`, `cliente`, `bitolas`, `fios`, `espiras`, `informacoes`, `imagem`) VALUES
-(1, 'test', 'gfdfdsd', '43', '32', 'sdfsdffgdfdfg', '401391.jpg');
+INSERT INTO `motorsp` (`id`, `cliente`, `bitolasP`, `fiosP`, `espirasP`, `bitolaAux`, `fiosAux`, `espirasAux`, `informacoes`, `imagem`) VALUES
+(1, 'vitor', 'gfdfdsd', '434', '32', '43543', 436, '4543', 'sdfsdffgdfdfg', '536874.jpg');
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `codigo`, `nome`, `cpf`, `telefone`, `senha`, `cargo`) VALUES
-(1, 0, 'Admin', '000.000.000-00', 0, '25d55ad283aa400af464c76d713c07ad', 1);
+(1, 1231345, 'teste', '014.254.689-50', 991317498, '25d55ad283aa400af464c76d713c07ad', 1);
 
 --
 -- Índices para tabelas despejadas
@@ -135,7 +135,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `motor`
 --
 ALTER TABLE `motor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `motorsp`
