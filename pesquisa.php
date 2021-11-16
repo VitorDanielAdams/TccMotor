@@ -182,9 +182,11 @@ if(!isset($_SESSION['id_user'])){
                     </div>
                 </div>
             </div>
-            
         </div>
-        <?php } ?>
+        <?php 
+            if(isset($_GET['busca'])){
+                echo "<a href='pesquisa.php' class='pag'>Voltar</a>";
+            } } ?>
     </div>
 </body>
 <script src="SCRIPT/script.js"></script>
