@@ -229,7 +229,7 @@ $u->createuser();
     </div>
 
 </body>
-<script src="SCRIPT/scriptchangepassword.js"></script>
+<script src="SCRIPT/scriptconfirm.js"></script>
 </html>
 <?php 
 }
