@@ -52,16 +52,16 @@ header a:hover {
 
 .container {
     width: 100%;
-    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .box {
     width: 90%;
-    min-height: 50vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +69,6 @@ header a:hover {
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgb(153, 153, 153);
-    margin-bottom: 2rem;
 }
 
 .barratarefas {
