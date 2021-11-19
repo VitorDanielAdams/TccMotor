@@ -29,7 +29,7 @@ if(!isset($_SESSION['id_user'])){
 </head>
 <body>
     <header>
-        <img src="images/logo.png">
+        <a href="<?php if($_SESSION['tipo'] == 1) { ?>admin.php<?php } else { ?>menu.php<?php } ?>"><img src="images/logo.png"></a>
         <a href="menu.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
     </header>
     <div class="container">

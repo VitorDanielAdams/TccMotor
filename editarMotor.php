@@ -14,11 +14,10 @@ if(!isset($_SESSION['id_user'])){
         echo 'Código não informado!';
         exit;
     }
-
     $motor = $m->seleciona($id);
-
+    
     function limpar_texto($str){ 
-        return preg_replace("/[^0-9]/", "", $str); 
+        return preg_replace('/[^\d,-]/i', "", $str); 
     }
 ?>
 <?php ob_start(); ?> 
@@ -43,7 +42,7 @@ if(!isset($_SESSION['id_user'])){
 </head>
 <body>
     <header>
-        <img src="images/logo.png">
+        <a href="pesquisa.php"><img src="images/logo.png"></a>
         <h1>Cadastro de Motores</h1>
         <a href="pesquisa.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
     </header>
@@ -74,7 +73,7 @@ if(!isset($_SESSION['id_user'])){
                         </div>
                         <div class="input">
                             <label>Voltagem</label>
-                            <input type="number" name="voltagem" id="voltagem" value="<?= limpar_texto($motor['voltagem'])?>">
+                            <input type="text" name="voltagem" id="voltagem" value="<?= limpar_texto($motor['voltagem'])?>">
                         </div>
                     </div>
 
@@ -85,7 +84,7 @@ if(!isset($_SESSION['id_user'])){
                         </div>
                         <div class="input">
                             <label>Amperagem</label>
-                            <input type="number" name="amperagem" id="amperagem" value="<?= limpar_texto($motor['amperagem'])?>">
+                            <input type="text" name="amperagem" id="amperagem" value="<?= limpar_texto($motor['amperagem'])?>">
                         </div>
                     </div>
 
@@ -100,6 +99,7 @@ if(!isset($_SESSION['id_user'])){
                                 <option value="<?= $motor['rotacao']?>"><?= $motor['rotacao']?></option>
                                 <option value="Horário">Horário</option>
                                 <option value="Anti-Horário">Anti-horário</option>
+                                <option value="Não informado">Não informado</option>
                             </select>
                         </div>
                     </div>
@@ -249,10 +249,10 @@ if(isset($_POST['salvar'])){
     $amperagem =  addslashes(strip_tags($_POST['amperagem']));
 	$bitolaP = addslashes(strip_tags($_POST['bitolaP']));
 	$fiosP = strip_tags($_POST['fiosP']);
-    $espirasP = implode("/ ", $_POST["espirasP"]);
+    $espirasP = implode("-", $_POST["espirasP"]);
     $bitolaA = addslashes(strip_tags($_POST['bitolaA']));
 	$fiosA = strip_tags($_POST['fiosA']);
-    $espirasA = implode("/ ", $_POST["espirasA"]);
+    $espirasA = implode("-", $_POST["espirasA"]);
     $marca = addslashes(strip_tags($_POST['marca']));
     $rpm = addslashes(strip_tags($_POST['rpm']));
     $rotacao = addslashes(strip_tags($_POST['rotacao']));
@@ -275,6 +275,14 @@ if(isset($_POST['salvar'])){
     && !empty($amperagem) && !empty($marca) && !empty($bitolaP) && !empty($fiosP) 
     && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) 
     && !empty($rpm) && $rotacao != 'hide'&& $ligacao != 'hide' && $camada != 'hide'){
+        $potencia = limpar_texto($potencia);
+        $voltagem = limpar_texto($voltagem);
+        $amperagem = limpar_texto($amperagem);
+        $rpm = limpar_texto($rpm);
+        $bitolaP = limpar_texto($bitolaP);
+        $bitolaA = limpar_texto($bitolaA);
+        $espirasP = limpar_texto($espirasP);
+        $espirasA = limpar_texto($espirasA); 
         $potencia .= "kW";
         $voltagem .= "V";
         $amperagem .= "A";

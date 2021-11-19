@@ -34,7 +34,7 @@ if(!isset($_SESSION['id_user'])){
     </div>
     <nav class="sidebar">
             <div class="logo">
-                <img src="images/logo.png">
+                <a href="sair.php"><img src="images/logo.png"></a>
             </div>
                 <ul>
                     <li><a href="menu.php">

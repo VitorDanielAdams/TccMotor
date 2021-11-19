@@ -25,14 +25,13 @@ header {
     padding: 0 40px;
 }
 
-header img {
+header a img {
     margin-right: auto;
     max-width: 150px;
 }
 
 header h1 {
     text-align: center;
-    margin-right: auto;
     font: bold 25px Poppins;
     color: rgb(8, 8, 8);
 }

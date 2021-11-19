@@ -1,5 +1,5 @@
 function confirmation() {
-    var x = confirm("Você tem certeza que deseja alterar a senha?");
+    var x = confirm("Você tem certeza que deseja excluir?");
     if (x == true) {
         return true;
     } else {

@@ -105,9 +105,13 @@ Class Usuario{
 
         global $pdo;
 
-        $sql = "SELECT * FROM usuarios WHERE nome LIKE '%$busca%' OR codigo = '$busca' LIMIT $pagina,$itens_por_pagina";
-        $run = $pdo->query($sql);
-        $numlinks = $run->rowCount();
+        $sql = "SELECT COUNT(id) FROM usuarios WHERE nome LIKE '%$busca%' OR codigo = '$busca' LIMIT $pagina,$itens_por_pagina";
+        $sql = $pdo->prepare($sql);
+        $sql->execute();
+
+        $row = $sql->fetch();
+        $numrecords = $row[0];
+        $numlinks = ceil($numrecords/$itens_por_pagina);
 
         return $numlinks;
 

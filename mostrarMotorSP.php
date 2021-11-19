@@ -38,7 +38,7 @@ if(!isset($_SESSION['id_user'])){
 </head>
 <body>
     <header>
-        <img src="images/logo.png">
+        <a href="pesquisa.php"><img src="images/logo.png"></a>
         <a href="pesquisa.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
     </header>
 

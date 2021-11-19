@@ -18,7 +18,7 @@ include 'Conecta.php';
 
 $funcionarios = $u->seleciona($id); 
 ?>
-
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

@@ -34,9 +34,9 @@ header {
     align-items: center;
 }
 
-header h1 {
-    font: bold 31px Poppins;
-    color: #252525;
+header a img {
+    margin-left: auto;
+    max-width: 150px;
 }
 
 header a {
@@ -50,10 +50,63 @@ header a:hover {
     opacity: .7;
 }
 
+.container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 90%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(153, 153, 153);
+    margin-bottom: 2rem;
+}
+
+.barratarefas {
+    width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.barratarefas h1 {
+    font: bold 32px Poppins;
+    color: #353535;
+}
+
+.barratarefas a {
+    padding: 8px 35px;
+    background-color: #252525;
+    color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #585858;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.barratarefas a:hover {
+    font: 17px Poppins;
+    background-color: #eb1616;
+    box-shadow: 2px 3px 5px #1f0d0d;
+    opacity: 0.8;
+}
+
 .form {
     width: 230px;
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
 }
 
 .form input {
@@ -98,38 +151,8 @@ input:-webkit-autofill {
     opacity: 0.7;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.barratarefas {
-    padding: 0 50px;
-    margin-top: 3rem;
-    margin-right: auto;
-}
-
-.barratarefas a {
-    padding: 8px 35px;
-    background-color: #252525;
-    color: #FFFFFF;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #585858;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.barratarefas a:hover {
-    font: 17px Poppins;
-    background-color: #eb1616;
-    box-shadow: 2px 3px 5px #1f0d0d;
-    opacity: 0.8;
-}
-
 #data-table {
-    width: 1300px;
+    width: 1100px;
     border-spacing: 0 0;
     border: 1px solid #585858;
     color: #fff;
@@ -145,9 +168,16 @@ table thead th {
     text-align: left;
 }
 
+table tbody tr:nth-child(even) {
+    background: #e0e0e0;
+}
+
+table tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
 table tbody td {
-    background: white;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid #585858;
     color: #141e30;
 }
@@ -164,20 +194,28 @@ table tr:hover {
     opacity: 1;
 }
 
-tbody tr td img {
-    width: 20px;
-    height: 20px;
+tbody tr td h2 {
+    background-color: #252525;
+    border-radius: 8px;
+    color: #ffffff;
+    font: bold 12px Poppins;
+    text-align: center;
+    box-shadow: 0 0 7px rgb(133, 133, 133);
+    padding: 4px 12px;
 }
 
 tbody tr td img:hover {
-    opacity: .7;
+    background-color: #494949;
+    opacity: .5;
+    cursor: pointer;
 }
 
 .paginacao {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .pag {
@@ -187,15 +225,15 @@ tbody tr td img:hover {
     margin-top: 1rem;
     margin-right: 10px;
     font: 18px Poppins;
-    color: #252525;
-    background-color: rgb(245, 245, 245);
-    opacity: 0.7;
+    color: #ffffff;
+    background-color: #252525;
+    opacity: .9;
     transition: 0.3s;
 }
 
 .pag:hover {
-    background-color: #fff;
-    opacity: 1;
+    background-color: #494949;
+    opacity: .7;
 }
 
 .pag a {

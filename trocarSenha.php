@@ -43,7 +43,7 @@ include 'Conecta.php';
         <h1>Funcionarios</h1>
         <div class="headericons">
             <a href="funcionarios.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
-            <a href="sair.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
+            <a href="sair.php"><i class="fa fa-times" aria-hidden="true"></i> Sair</a>
         </div>
     </header>
     <!--Form Cadastro-->

@@ -7,6 +7,10 @@ if(!isset($_SESSION['id_user'])){
     require_once 'CLASSES/Motores.php';
     $m = new Motor;
     include 'Conecta.php';
+
+    function limpar_texto($str){ 
+        return preg_replace('/[^\d,-]/i', "", $str); 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +34,7 @@ if(!isset($_SESSION['id_user'])){
 </head>
 <body>
     <header>
-        <img src="images/logo.png">
+        <a href="menu.php"><img src="images/logo.png"></a>
         <h1>Cadastro de Motores</h1>
         <a href="menu.php"><i class="fa fa-arrow-left" aria-hidden="true"></i> Voltar</a>
     </header>
@@ -169,10 +173,10 @@ if(!isset($_SESSION['id_user'])){
 if(isset($_POST['salvar'])){
 	$bitolaP = addslashes(strip_tags($_POST['bitolaP']));
 	$fiosP = strip_tags($_POST['fiosP']);
-    $espirasP = implode(" / ", $_POST["espirasP"]);
+    $espirasP = implode("-", $_POST["espirasP"]);
     $bitolaA = addslashes(strip_tags($_POST['bitolaA']));
 	$fiosA =strip_tags( $_POST['fiosA']);
-    $espirasA = implode(" / ", $_POST["espirasA"]);
+    $espirasA = implode("-", $_POST["espirasA"]);
     $informacoes = addslashes(strip_tags($_POST['informacoes']));
     $cliente = addslashes(strip_tags($_POST['cliente']));
     
@@ -184,6 +188,11 @@ if(isset($_POST['salvar'])){
     $imgExt=strtolower(pathinfo($images,PATHINFO_EXTENSION));
     $valid_extensions=array('jpeg', 'jpg', 'png', 'gif', 'pdf');
     $pic=rand(1000, 1000000).".".$imgExt;
+
+    $bitolaP = limpar_texto($bitolaP);
+    $bitolaA = limpar_texto($bitolaA); 
+    $espirasP = limpar_texto($espirasP);
+    $espirasA = limpar_texto($espirasA);
 
     if(!empty($cliente) && !empty($bitolaP) && !empty($fiosP) 
     && !empty($espirasP) && !empty($bitolaA) && !empty($fiosA) && !empty($espirasA) && !empty($images)){
